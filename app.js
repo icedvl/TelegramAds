@@ -1,8 +1,8 @@
+const path = require("path");
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 const server = require('./pre_build/server.js');
-const { app, BrowserWindow, ipcMain } = require('electron');
-const {dirname} = require("path");
+const { app, BrowserWindow, session } = require('electron');
 
 // try {
 //     require('electron-reloader')(module)
@@ -13,55 +13,54 @@ autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
-let template = []
-if (process.platform === 'darwin') {
-    // OS X
-    const name = app.getName();
-    template.unshift({
-        label: name,
-        submenu: [
-            {
-                label: 'About ' + name,
-                role: 'about'
-            },
-            {
-                label: 'Quit',
-                accelerator: 'Command+Q',
-                click() { app.quit(); }
-            },
-        ]
-    })
-}
 
-let mainWindow;
+
+let win;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({
+    win = new BrowserWindow({
         width: 1400,
         height: 800,
         backgroundColor: '#121423',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            // enableRemoteModule: true,
+            devTools: true,
             preload: dirname + '/pre_build/assets/script/libs/jquery-3.6.1.min.js',
 
         },
     });
-    mainWindow.loadFile('./pre_build/index.html')
-    mainWindow.webContents.openDevTools()
-    mainWindow.on('close', event => {
-        mainWindow = null
-    })
+    win.loadFile('./pre_build/index.html')
 
-    mainWindow.once('ready-to-show', () => {
-        autoUpdater.checkForUpdatesAndNotify();
-    });
+
+    autoUpdater.checkForUpdatesAndNotify();
+
+    win.on('close', event => {
+        win = null
+    })
 }
 
 app.on('ready', () => {
     createWindow();
 });
+
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {

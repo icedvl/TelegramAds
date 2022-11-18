@@ -1,17 +1,18 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "TelegramAds App - Automate your promotion",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/icedvl/TelegramAds.git"
+    "type": "git",
+    "url": "https://github.com/icedvl/TelegramAds.git"
   },
   "main": "app.js",
   "scripts": {
     "dev": "gulp dev & electron .",
     "pre-build": "gulp build",
     "build": "electron-builder build --mac --win --publish never",
-    "deploy": "electron-builder build --mac --win --publish always"
+    "deploy": "electron-builder build --mac --win --publish always",
+    "increment-version": "versiony package.json --patch && git add . && git commit -m 'new version' && git push"
   },
   "build": {
     "productName": "TelegramAds App",
@@ -52,6 +53,7 @@
     "electron-updater": "^5.3.0",
     "express": "^4.18.2",
     "jquery": "^3.6.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "versiony": "^2.0.1"
   }
 }
