@@ -1,0 +1,70 @@
+{
+  "lang": {
+    "code": "RU",
+    "name": "Russian",
+    "title": "Русский",
+    "button": "Язык"
+  },
+  "pages": {
+    "auth": {
+      "signIn": {
+        "placeholders": {
+          "email": "Email",
+          "password": "Password"
+        },
+        "button": "Войти",
+        "recover": "Забыли пароль?",
+        "signUp": "Нет аккаунта? <span>Зарегистрироваться</span>"
+      },
+      "signUp": {
+        "placeholders": {
+          "email": "Email",
+          "password": "Password (минимум 6 символов)",
+          "passwordConfirm": "Повторите Password"
+        },
+        "button": "Зарегистрировать",
+        "signIn": "Уже есть аккаунт? <span>Авторизироваться</span>"
+      },
+      "recover": {
+        "placeholders": {
+          "email": "Email"
+        },
+        "messages": {
+          "newPassword": "Новый пароль выслан на почту",
+          "wrongEmail": "Такой Email не зарегистрирован"
+        },
+        "button": "Восстановить",
+        "signIn": "Войти",
+        "signUp": "Нет аккаунта? <span>Зарегистрироваться</span>"
+      }
+    },
+    "resources": {
+      "title": "Ресурсы"
+    },
+    "audience": {
+      "title": "Аудитория"
+    },
+    "accounts": {
+      "title": "Аккаунты",
+      "tabs": {
+        "spam": {
+          "title": "Рассылка"
+        }
+      }
+    },
+    "groups": {
+      "title": "Сообщества",
+      "tabs": {
+        "invite": {
+          "title": "Инвайтинг"
+        }
+      }
+    },
+    "settings": {
+      "title": "Настройки"
+    },
+    "account": {
+      "title": "Аккаунт"
+    }
+  }
+}

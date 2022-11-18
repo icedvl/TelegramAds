@@ -1,0 +1,240 @@
+.auth {
+	position: relative;
+	font-family: 'Montserrat';
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+
+	&_input {
+		position: relative;
+		width: 350px;
+		height: 50px;
+		margin-bottom: 24px;
+
+		input {
+			font-family: 'Montserrat';
+			width: 100%;
+			height: 100%;
+			background: rgba(60, 65, 101, 0.25);
+			border-radius: 8px;
+			border: 0;
+			padding: 0 66px 0 16px;
+			outline: none;
+			color: #ffffff;
+			font-weight: 600;
+			font-size: 14px;
+
+			&::placeholder {
+				color: #9CA2C9;
+				font-size: 14px;
+			}
+		}
+
+		.input_error,
+		.input_pass-show,
+		.input_pass-hide {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50px;
+			height: 50px;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		.input_pass-show,
+		.input_pass-hide {
+			cursor: pointer;
+		}
+
+		.input_pass-show {
+			display: flex;
+		}
+
+		&.error {
+			.input_error {
+				display: flex;
+			}
+
+			.input_pass-show,
+			.input_pass-hide {
+				display: none!important;
+			}
+		}
+	}
+
+	button {
+		font-family: 'Montserrat';
+		width: 350px;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px 0;
+		border: 0;
+		background: green;
+		border-radius: 8px;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 20px;
+		color: @white;
+		cursor: pointer;
+		background: linear-gradient(180deg, #8F7CFF 0%, #7761FF 50%, #604DD6 100%);
+		transition: .2s background-position linear;
+		background-size: 100% 200%;
+		background-position: 0 100%;
+		user-select: none;
+		
+		&:hover:not(:disabled) {
+			background-position: 0 0;
+		}
+
+		&:active:not(:disabled) {
+			padding-top: 12px;
+			background: linear-gradient(180deg, #44359F 0%, #604DD6 100%);
+		}
+
+		.button_loader {
+			display: none;
+			width: 24px;
+			height: 24px;
+			position: absolute;
+			animation: loaderRotate .5s infinite linear;
+		}
+
+		@keyframes loaderRotate {
+			100% {
+				transform: rotateZ(360deg);
+			}
+		}
+
+		&.loading {
+			.button_text {
+				display: none;
+			}
+			.button_loader {
+				display: block;
+			}
+		}
+	}
+
+	&_message {
+		position: absolute;
+		top: -40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: #fff;
+		width: 100%;
+
+		svg {
+			margin-right: 8px;
+			display: inline-block;
+		}
+	}
+
+	&_signin {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		font-weight: 600;
+
+		&_recover {
+			user-select: none;
+			color: @primary;
+			margin-top: 32px;
+			cursor: pointer;
+			transition: color .2s;
+
+			&:hover:not(.auth_signin.loading .auth_signin_recover) {
+				color: @primaryLight;
+			}
+		}
+
+		&_signup {
+			user-select: none;
+			color: @white;
+			margin-top: 48px;
+
+			span {
+				color: @primary;
+				transition: color .2s;
+				cursor: pointer;
+
+				&:hover:not(.auth_signin.loading .auth_signin_signup span) {
+					color: @primaryLight;
+				}
+			}
+		}
+	}
+
+	&_signup {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		font-weight: 600;
+
+		&_signin {
+			user-select: none;
+			color: @white;
+			margin-top: 48px;
+
+			span {
+				color: @primary;
+				transition: color .2s;
+				cursor: pointer;
+
+				&:hover:not(.auth_signup.loading .auth_signup_signin span) {
+					color: @primaryLight;
+				}
+			}
+		}
+	}
+
+	&_recover {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		font-weight: 600;
+
+		&_signin {
+			user-select: none;
+			color: @primary;
+			margin-top: 32px;
+			cursor: pointer;
+			transition: color .2s;
+
+			&:hover:not(.auth_recover.loading .auth_recover_signin) {
+				color: @primaryLight;
+			}
+		}
+
+		&_signup {
+			user-select: none;
+			color: @white;
+			margin-top: 48px;
+
+			span {
+				color: @primary;
+				transition: color .2s;
+				cursor: pointer;
+
+				&:hover:not(.auth_recover.loading .auth_recover_signup span) {
+					color: @primaryLight;
+				}
+			}
+		}
+	}
+}
+

@@ -1,0 +1,60 @@
+.language {
+	font-family: 'Montserrat';
+	z-index: 3;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	font-size: 14px;
+	padding: 24px;
+	color: @white;
+
+	&_button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		cursor: pointer;
+		transition: color .3s;
+
+		svg {
+			margin-left: 8px;
+
+			path {
+				transition: stroke .3s;
+			}
+		}
+
+		&:hover {
+			color: @primary;
+
+			svg {
+				path {
+					stroke: @primary;
+				}
+			}
+		}
+	}
+
+	&_list {
+		display: none;
+		padding-top: 16px;
+
+		div {
+			font-weight: 500;
+			padding: 8px 0;
+			cursor: pointer;
+
+			&.active {
+				color: @primary;
+			}
+
+			&:hover {
+				color: @primaryLight;
+			}
+		}
+	}
+
+
+
+}

@@ -1,0 +1,55 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 4px;
+	margin-right: 24px;
+
+	&_logo {
+		width: 40px;
+		margin-bottom: 32px;
+		display: flex;
+		justify-content: center;
+
+		svg {
+			display: block;
+			width: 100%;
+			height: available;
+		}
+	}
+
+	nav {
+		margin-bottom: auto;
+	}
+
+	nav>div,
+	.sidebar_settings {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 48px;
+		height: 48px;
+		border-radius: 8px;
+		transition: background .3s;
+		cursor: pointer;
+		margin-bottom: 16px;
+
+		svg {
+			path {
+				transition: stroke .3s;
+			}
+		}
+
+		&:hover,
+		&.active {
+			background: rgba(185, 192, 255, 0.3);
+
+			svg {
+				path {
+					stroke: @white;
+				}
+			}
+		}
+	}
+}
