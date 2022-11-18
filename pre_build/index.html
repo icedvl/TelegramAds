@@ -7,8 +7,7 @@
                 content= "default-src 'none'; script-src 'self'; connect-src 'self' http://127.0.0.1:2207; img-src 'self'; style-src 'self'; font-src 'self';"
         />
         <title>TelegramAds App</title>
-        <link rel="stylesheet" href="assets/style/style.css?v=73ce98620e18bfa588b747f6a8a3d269">
-        <script src="assets/script/libs/jquery-3.6.1.min.js"></script>
+        <link rel="stylesheet" href="assets/style/style.css?v=7422807320f1a3db983eb6a7a3d586b0">
     </head>
     <body>
         <div class="background">
@@ -16,7 +15,18 @@
             <div class="circle2"></div>
             <div class="circle3"></div>
         </div>
-        <script src="assets/script/script.js?v=90b3a594f332d90fd73e88534f0e2370"></script>
+
+        <div id="notification" class="hidden">
+            <p id="message"></p>
+            <button id="close-button" onClick="closeNotification()">
+                Close
+            </button>
+            <button id="restart-button" onClick="restartApp()" class="hidden">
+                Restart
+            </button>
+        </div>
+
+        <script src="assets/script/script.js?v=13f99c89dd421d3d807733865c1c007c"></script>
     </body>
 </html>
 

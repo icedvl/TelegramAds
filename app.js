@@ -1,7 +1,8 @@
 const log = require('electron-log');
-const {autoUpdater} = require("electron-updater");
+const { autoUpdater } = require('electron-updater');
 const server = require('./pre_build/server.js');
-const { BrowserWindow, app } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
+const {dirname} = require("path");
 
 try {
     require('electron-reloader')(module)
@@ -32,22 +33,61 @@ if (process.platform === 'darwin') {
     })
 }
 
+let mainWindow;
 
-function main() {
-    let mainWindow = new BrowserWindow({
+function createWindow() {
+    mainWindow = new BrowserWindow({
         width: 1400,
         height: 800,
-        backgroundColor: '#121423'
+        backgroundColor: '#121423',
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            // enableRemoteModule: true,
+            preload: dirname + '/pre_build/assets/script/libs/jquery-3.6.1.min.js',
+
+        },
     });
     mainWindow.loadFile('./pre_build/index.html')
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
     mainWindow.on('close', event => {
         mainWindow = null
     })
+
+    mainWindow.once('ready-to-show', () => {
+        autoUpdater.checkForUpdatesAndNotify();
+    });
 }
 
-app.on('ready', function()  {
-    autoUpdater.checkForUpdatesAndNotify();
-    main();
+app.on('ready', () => {
+    createWindow();
 });
 
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', function () {
+    if (mainWindow === null) {
+        createWindow();
+    }
+})
+
+ipcMain.on('app_version', (event) => {
+    event.sender.send('app_version', { version: app.getVersion() });
+});
+
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
+});
+
+
+
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update_available');
+});
+autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update_downloaded');
+});

@@ -20,6 +20,7 @@ const path = {
 		libs: 'pre_build/assets/script/libs',
 		style: 'pre_build/assets/style',
 		lang: 'pre_build/assets/lang',
+		fonts: 'pre_build/assets/fonts',
 		img: 'pre_build/assets/images',
 		server: './pre_build/'
 	},
@@ -29,6 +30,7 @@ const path = {
 		libs: 'src/client/script/libs/**/*',
 		style: 'src/client/style/style.less',
 		lang: 'src/client/lang/**/*.*',
+		fonts: 'src/client/fonts/**/*.*',
 		img: 'src/client/images/**/*.*',
 		server: 'src/server/**/*'
 	},
@@ -38,6 +40,7 @@ const path = {
 		libs: 'src/client/script/libs/**/*.*',
 		style: 'src/client/style/**/*',
 		lang: 'src/client/lang/**/*.*',
+		fonts: 'src/client/fonts/**/*.*',
 		img: 'src/client/images/**/*.*',
 		server: 'src/server/**/*.*'
 	},
@@ -145,6 +148,12 @@ function libs() {
 		.pipe(gulp.dest(path.build.libs))
 }
 
+function fonts() {
+	return gulp
+		.src(path.src.fonts)
+		.pipe(gulp.dest(path.build.fonts))
+}
+
 function images() {
 	return gulp
 		.src(path.src.img)
@@ -167,14 +176,15 @@ function watchFiles() {
 	gulp.watch(path.watch.html, html);
 	gulp.watch(path.watch.js, gulp.series(html, script));
 	gulp.watch(path.watch.lang, lang);
+	gulp.watch(path.watch.img, fonts);
 	gulp.watch(path.watch.img, images);
 	gulp.watch(path.watch.server, server);
 }
 
 // define complex tasks
 const watch = gulp.parallel(watchFiles);
-const dev = gulp.parallel(gulp.series(removeFolder, gulp.parallel(html, css, script, libs, images, lang, server)), watch);
-const build = gulp.series(removeFolder, gulp.parallel(cssBuild, images, html, scriptBuild, libs, lang, server));
+const dev = gulp.parallel(gulp.series(removeFolder, gulp.parallel(html, css, script, libs, fonts, images, lang, server)), watch);
+const build = gulp.series(removeFolder, gulp.parallel(cssBuild, fonts, images, html, scriptBuild, libs, lang, server));
 
 
 

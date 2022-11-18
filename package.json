@@ -9,14 +9,16 @@
     "publish": "electron-builder --win --mac -p always"
   },
   "build": {
-    "publish": [{
-      "provider": "github",
-      "owner": "icedvl",
-      "repo": "TelegramAds",
-      "vPrefixedTagName": true,
-      "publishAutoUpdate": true,
-      "timeout": 30000
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "icedvl",
+        "repo": "TelegramAds",
+        "vPrefixedTagName": true,
+        "publishAutoUpdate": true,
+        "timeout": 30000
+      }
+    ],
     "productName": "TelegramAds App",
     "mac": {
       "target": "default",
