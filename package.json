@@ -1,6 +1,6 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "TelegramAds App - Automate your promotion",
   "main": "app.js",
   "scripts": {
@@ -12,7 +12,12 @@
     "publish": [{
       "provider": "github",
       "owner": "icedvl",
-      "repo": "TelegramAds"
+      "repo": "TelegramAds",
+      "vPrefixedTagName": true,
+      "token": "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",
+      "private": true,
+      "publishAutoUpdate": true,
+      "timeout": 30000
     }],
     "productName": "TelegramAds App",
     "mac": {

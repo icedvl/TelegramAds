@@ -40,7 +40,7 @@ function main() {
         backgroundColor: '#121423'
     });
     mainWindow.loadFile('./pre_build/index.html')
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
     mainWindow.on('close', event => {
         mainWindow = null
     })
