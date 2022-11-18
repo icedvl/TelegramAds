@@ -1,6 +1,6 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "TelegramAds App - Automate your promotion",
   "repository": {
     "type": "git",
@@ -32,7 +32,6 @@
       "category": "Telegram, Marketing",
       "icon": "./pre_build/assets/images/app_icon_512x512.png"
     },
-    "afterSign": "notarize.js",
     "dmg": {
       "sign": false
     },
