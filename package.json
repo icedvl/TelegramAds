@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "dev": "gulp dev & electron .",
-    "build": "gulp build & electron-builder -mwl"
+    "build": "gulp build & electron-builder -mwl",
+    "publish": "electron-builder -mwl -p always"
   },
   "build": {
     "publish": [{
       "provider": "github",
       "owner": "icedvl",
-      "repo": "electron-updater-example"
+      "repo": "TelegramAds"
     }],
     "productName": "TelegramAds App",
     "mac": {

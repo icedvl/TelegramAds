@@ -1,2 +1,9 @@
 node_modules
 .env
+src
+pre_build
+app.js
+gulpfile.js
+package-lock.json
+package.json
+dist
