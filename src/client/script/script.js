@@ -6,6 +6,13 @@ ipcRenderer.on('app_version', (event, arg) => {
     localStorage.setItem('version', arg.version)
 });
 
+ipcRenderer.on('update_available', () => {
+    console.log('Update Available')
+});
+ipcRenderer.on('update_downloaded', () => {
+    console.log('Update Downloaded')
+});
+
 
 window.$ = window.jQuery = require('jquery');
 

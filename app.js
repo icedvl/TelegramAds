@@ -54,3 +54,10 @@ ipcMain.on('app_version', (event) => {
     event.sender.send('app_version', { version: app.getVersion() });
 });
 
+autoUpdater.on('update-available', () => {
+    win.webContents.send('update_available');
+});
+autoUpdater.on('update-downloaded', () => {
+    win.webContents.send('update_downloaded');
+});
+
