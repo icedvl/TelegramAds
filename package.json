@@ -1,6 +1,6 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "TelegramAds App - Automate your promotion",
   "repository": {
     "type": "git",
@@ -12,14 +12,29 @@
     "pre-build": "gulp build",
     "build": "electron-builder build --mac --win --publish never",
     "deploy": "electron-builder build --mac --win --publish always",
-    "increment-version": "versiony package.json --patch && git add . && git commit -m 'new version' && git push"
+    "increment-version": "versiony package.json --patch && git add . && git commit -m 'new version' && git push",
+    "build-and-publish": "npm run increment-version && npm run deploy"
   },
   "build": {
     "productName": "TelegramAds App",
+    "artifactName": "telegram-ads-${version}-${os}-${arch}.${ext}",
+    "publish": [
+      {
+        "provider": "github",
+        "private": false,
+        "releaseType": "release"
+      }
+    ],
     "mac": {
-      "target": "default",
+      "hardenedRuntime": true,
+      "entitlements": "src/entitlements.mac.plist",
+      "entitlementsInherit": "src/entitlements.mac.plist",
       "category": "Telegram, Marketing",
       "icon": "./pre_build/assets/images/app_icon_512x512.png"
+    },
+    "afterSign": "notarize.js",
+    "dmg": {
+      "sign": false
     },
     "win": {
       "target": "nsis",
