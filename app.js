@@ -2,7 +2,7 @@ const path = require("path");
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 const server = require('./pre_build/server.js');
-const { app, BrowserWindow, session } = require('electron');
+const { app, BrowserWindow, session, ipcMain} = require('electron');
 
 // try {
 //     require('electron-reloader')(module)
@@ -49,4 +49,8 @@ app.on('window-all-closed', function () {
     }
 });
 
+
+ipcMain.on('app_version', (event) => {
+    event.sender.send('app_version', { version: app.getVersion() });
+});
 
