@@ -6,7 +6,6 @@ ipcRenderer.on('app_version', (event, arg) => {
     localStorage.setItem('version', arg.version)
 });
 
-window.$ = window.jQuery = require('jquery');
 
 
 
@@ -33,10 +32,14 @@ function restartApp() {
     ipcRenderer.send('restart_app');
 }
 
+restartButton.onclick = function () {
+    console.log('Restart')
+    restartApp();
+};
+document.getElementById('close-button').addEventListener('click', closeNotification);
 
 
-
-
+window.$ = window.jQuery = require('jquery');
 
 (async () => {
     const app = {};

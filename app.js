@@ -4,9 +4,9 @@ const server = require('./pre_build/server.js');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const {dirname} = require("path");
 
-try {
-    require('electron-reloader')(module)
-} catch (_) {}
+// try {
+//     require('electron-reloader')(module)
+// } catch (_) {}
 
 
 autoUpdater.logger = log;
@@ -80,14 +80,23 @@ ipcMain.on('app_version', (event) => {
 });
 
 ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
+    // autoUpdater.quitAndInstall();
+    setImmediate(() => {
+        app.removeAllListeners("window-all-closed")
+        if (mainWindow != null) {
+            mainWindow.close()
+        }
+        autoUpdater.quitAndInstall(false)
+    })
 });
 
 
 
 autoUpdater.on('update-available', () => {
+    console.log( 'Update is available' )
     mainWindow.webContents.send('update_available');
 });
 autoUpdater.on('update-downloaded', () => {
+    console.log( 'Update is downloaded' )
     mainWindow.webContents.send('update_downloaded');
 });
