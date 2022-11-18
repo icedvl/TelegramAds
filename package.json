@@ -1,12 +1,12 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TelegramAds App - Automate your promotion",
   "main": "app.js",
   "scripts": {
     "dev": "gulp dev & electron .",
     "build": "gulp build & electron-builder -mwl",
-    "publish": "electron-builder -mwl -p always"
+    "publish": "electron-builder --win --mac -p always"
   },
   "build": {
     "publish": [{
@@ -14,8 +14,6 @@
       "owner": "icedvl",
       "repo": "TelegramAds",
       "vPrefixedTagName": true,
-      "token": "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",
-      "private": true,
       "publishAutoUpdate": true,
       "timeout": 30000
     }],
