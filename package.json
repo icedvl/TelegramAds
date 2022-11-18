@@ -1,6 +1,6 @@
 {
   "name": "telegramads_app",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "TelegramAds App - Automate your promotion",
   "main": "app.js",
   "scripts": {
