@@ -1,44 +1,67 @@
-const { ipcRenderer } = require('electron');
-ipcRenderer.send('app_version');
-ipcRenderer.on('app_version', (event, arg) => {
-    ipcRenderer.removeAllListeners('app_version');
-    console.log( arg.version )
-    localStorage.setItem('version', arg.version)
-});
-
-ipcRenderer.on('update_available', () => {
-    console.log('Update Available')
-});
-ipcRenderer.on('update_downloaded', () => {
-    console.log('Update Downloaded')
-});
-
-
 window.$ = window.jQuery = require('jquery');
+const { ipcRenderer } = require('electron');
+//=require libs/jquery-ui.js
+
+
+let languages = {};
+//=require ../lang/en.js
+//=require ../lang/ru.js
+let lang = languages[ localStorage.getItem('lang') || 'en' ];
+
+
+//=require defaultConfig.js
+let state = {
+    pages: JSON.parse( localStorage.getItem('pages') ) || defaultPages,
+    params: JSON.parse( localStorage.getItem('params') ) || defaultParams,
+}
+
+const app = {
+    pages: {}
+};
+
 
 (async () => {
-    const app = {};
-    //=require svg.js
-    //=require utils.js
-    //=require partials/elements.js
 
+    // console.log( state )
+
+    // подгружаем язык
+
+    //=require utils.js
+    //=require svg.js
+    //=require partials/elements.js
+    //=require partials/updates.js
     //=require partials/auth.js
     //=require partials/sidebar.js
     //=require partials/content.js
+    //=require pages/resources/page_resources.js
+    //=require pages/audiences/page_audiences.js
+    //=require pages/accounts/page_accounts.js
+    //=require pages/groups/page_groups.js
+    //=require pages/settings/page_settings.js
+    //=require pages/account/page_account.js
 
-    const lang = await $.getJSON(`assets/lang/${localStorage.getItem('lang') || 'en' }.json`);
 
-    // проверяем авторизацию
-    if ( localStorage.getItem('isAuth') ) {
-        // Если авторизирован рисуем приложение
-        // app.sidebar.render();
-        // app.content.render();
-        app.auth.render()
+    // проверяем есть ли у пользователя интернет
+    if ( !window.navigator.onLine ) {
+
+        await utils.system.connectionStatus()
     } else {
-        // Если не авторизирован рисуем окно авторизации/регистрации
-        console.log('Не авторизирован')
-        localStorage.removeItem('authRequest')
-        app.auth.render()
+
+        // проверяем жив ли сервер, и есть ли какая-то информация
+        if (await utils.system.serverStatus()) {
+
+            // проверяем авторизацию
+            if (await app.auth.check()) {
+                $('body').removeClass('loading').addClass('authorized');
+                app.sidebar.render();
+                app.content.render();
+                utils.page.open( state.pages.open );
+
+            } else {
+                $('body').removeClass('loading')
+                app.auth.render()
+            }
+        }
     }
 })();
 

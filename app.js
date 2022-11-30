@@ -2,7 +2,7 @@ const path = require("path");
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 const server = require('./pre_build/server.js');
-const { app, BrowserWindow, session, ipcMain} = require('electron');
+const { app, BrowserWindow, session, ipcMain, dialog} = require('electron');
 
 // try {
 //     require('electron-reloader')(module)
@@ -12,8 +12,6 @@ const { app, BrowserWindow, session, ipcMain} = require('electron');
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
-
-
 
 let win;
 
@@ -25,7 +23,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            devTools: true,
+            enableRemoteModule: true,
         },
     });
     win.loadFile('./pre_build/index.html')
@@ -60,4 +58,12 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-downloaded', () => {
     win.webContents.send('update_downloaded');
 });
+
+
+
+process.on('uncaughtException', function (error) {
+    // Handle the error
+    console.log( error )
+})
+
 

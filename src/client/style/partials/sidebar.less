@@ -1,4 +1,6 @@
 .sidebar {
+	z-index: 2;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -44,6 +46,39 @@
 		&:hover,
 		&.active {
 			background: rgba(185, 192, 255, 0.3);
+
+			svg {
+				path {
+					stroke: @white;
+				}
+			}
+		}
+	}
+
+	.sidebar_account {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		transition: border .3s, background .3s;
+		cursor: pointer;
+		background: rgba(76, 79, 97, 0.3);
+		border: 1px solid #7d7e92;
+		margin-top: 32px;
+		margin-bottom: 16px;
+
+		svg {
+			path {
+				transition: stroke .3s;
+			}
+		}
+		
+		&:hover,
+		&.active {
+			background: rgba(185, 192, 255, 0.3);
+			border-color: @white;
 
 			svg {
 				path {

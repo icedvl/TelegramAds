@@ -1,18 +1,56 @@
 app.auth = {
     render: () => {
+
         const auth = $('<DIV/>', { class: 'auth' });
+        $('body').append( auth );
 
         app.auth.signIn.render(auth);
         // app.auth.signUp.render(auth); // Открыть сразу же экран Регистрации для теста
         // app.auth.recover.render(auth); // Открыть сразу же экран Восстановления пароля для теста
 
-        elements.popup('block', $('body'), auth);
+        app.auth.language.render( $('body') );
 
-        elements.language.render();
+
+
+
+    },
+    check: async () => {
+         if ( localStorage.getItem('token') ) {
+             $.ajaxSetup({
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Accept': 'application/json',
+                     'Authorization': 'Bearer ' + localStorage.getItem('token')
+                 }
+             });
+
+             const response = await fetch(process.env.SERVER + '/auth/check', {
+                 method: 'GET',
+                 mode: 'cors',
+                 cache: 'no-cache',
+                 credentials: 'same-origin',
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': 'Bearer ' + localStorage.getItem('token')
+                 },
+             })
+
+             if ( response.status ) {
+                 if (response.status === 401 || response.status === 403) {
+                     localStorage.removeItem('token')
+                     return false
+                 }
+                 if ( response.status === 200 ) {
+                     return true
+                 }
+             }
+
+         } else {
+             return false;
+         }
     },
     signIn: {
         render: (target) => {
-            let emailTimeout, passwordTimout;
 
             const wrap = $('<FORM/>', {class: 'auth_signin magictime'}).on('submit', (e) => {
                 e.preventDefault();
@@ -40,49 +78,37 @@ app.auth = {
             const buttonRecover = $('<DIV/>', {class: 'auth_signin_recover', text: lang.pages.auth.signIn.recover});
             const buttonSignUp = $('<DIV/>', {class: 'auth_signin_signup', html: lang.pages.auth.signIn.signUp});
 
-            buttonSignIn.on('click', function () {
+            buttonSignIn.on('click', () => {
 
                 let validate = true;
 
-                console.log( /\S+@\S+\.\S+/.test( email.find('input').val() ) );
+                if ( sessionStorage.getItem('authRequest') ) {
+                    validate = false
+                }
 
                 if ( !email.find('input').val() || !/\S+@\S+\.\S+/.test( email.find('input').val() ) ) {
                     validate = false;
-                    email.removeClass('error');
-                    email.addClass('error');
-                    clearTimeout( emailTimeout )
-                    emailTimeout = setTimeout(() => {
-                        email.removeClass('error');
-                        clearTimeout( emailTimeout )
-                    }, 2000)
+                    app.auth.inputError(email)
                 }
 
                 if ( !password.find('input').val() ) {
                     validate = false;
-                    password.removeClass('error');
-                    password.addClass('error');
-                    clearTimeout( passwordTimout )
-                    passwordTimout = setTimeout(() => {
-                        password.removeClass('error');
-                        clearTimeout( passwordTimout )
-                    }, 2000)
+                    app.auth.inputError(password)
                 }
 
                 if ( validate ) {
                     email.removeClass('error');
                     password.removeClass('error');
-                    wrap.addClass('loading');
-                    $(this).addClass('loading').attr('disabled', true);
-                    localStorage.setItem('authRequest', true);
                     app.auth.signIn.request({
                         email: email.find('input').val(),
                         password: password.find('input').val()
-                    });
+                    }, {wrap, email, password, button: buttonSignIn});
                 }
             })
 
             buttonSignUp.on('click', () => {
-                if ( !localStorage.getItem('authRequest') ) {
+
+                if ( !sessionStorage.getItem('authRequest') ) {
                     wrap.removeClass('spaceInRight').addClass('spaceOutLeft')
                     if (!$('.auth_signup').length) {
                         app.auth.signUp.render(target);
@@ -93,7 +119,8 @@ app.auth = {
             })
 
             buttonRecover.on('click', () => {
-                if ( !localStorage.getItem('authRequest') ) {
+
+                if ( !sessionStorage.getItem('authRequest') ) {
                     wrap.removeClass('spaceInRight').addClass('spaceOutLeft')
                     if (!$('.auth_recover').length) {
                         app.auth.recover.render(target);
@@ -113,17 +140,35 @@ app.auth = {
                 )
             )
         },
-        request: (data) => {
-            console.log( data.email, data.password )
-            $.post('http://127.0.0.1:2207/auth/signin', data)
+        request: (data, el) => {
+            sessionStorage.setItem('authRequest', true);
+            el.wrap.addClass('loading');
+            el.button.addClass('loading').attr('disabled', true);
+
+            $.post(process.env.SERVER + '/auth/signin', data)
                 .done(res => {
-                    utils.page.clearAll();
-                    localStorage.setItem('isAuth', true);
-                    app.sidebar.render();
-                    app.content.render();
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
+                    if ( res.error ) {
+                        if ( res.error.code === 400 ) {
+                            app.auth.inputError(el.email)
+                        }
+                        if ( res.error.code === 401 ) {
+                            app.auth.inputError(el.password)
+                        }
+                    } else {
+                        localStorage.setItem('token', res.token)
+                        utils.page.clearAll();
+                        app.sidebar.render();
+                        app.content.render();
+                        utils.page.open( state.pages.open );
+                    }
                 })
-                .catch(err => {
-                    console.log(err)
+                .fail(err => {
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
                 })
         }
     },
@@ -173,48 +218,27 @@ app.auth = {
 
                 if ( !email.find('input').val() || !/\S+@\S+\.\S+/.test( email.find('input').val() ) ) {
                     validate = false;
-                    email.removeClass('error');
-                    email.addClass('error');
-                    clearTimeout( emailTimeout )
-                    emailTimeout = setTimeout(() => {
-                        email.removeClass('error');
-                        clearTimeout( emailTimeout )
-                    }, 2000)
+                    app.auth.inputError(email)
                 }
 
-                if ( !password.find('input').val() ) {
+                if ( !password.find('input').val() || password.find('input').val().length < 6 ) {
                     validate = false;
-                    password.removeClass('error');
-                    password.addClass('error');
-                    clearTimeout( passwordTimout )
-                    passwordTimout = setTimeout(() => {
-                        password.removeClass('error');
-                        clearTimeout( passwordTimout )
-                    }, 2000)
+                    app.auth.inputError(password)
                 }
 
                 if ( password.find('input').val() !== passwordConfirm.find('input').val() ) {
                     validate = false;
-                    passwordConfirm.removeClass('error');
-                    passwordConfirm.addClass('error');
-                    clearTimeout( passwordConfirmTimeout );
-                    passwordConfirmTimeout = setTimeout(() => {
-                        passwordConfirm.removeClass('error');
-                        clearTimeout( passwordConfirmTimeout );
-                    }, 2000)
+                    app.auth.inputError(passwordConfirm)
                 }
 
                 if ( validate ) {
                     email.removeClass('error');
                     password.removeClass('error');
                     passwordConfirm.removeClass('error');
-                    wrap.addClass('loading');
-                    $(this).addClass('loading').attr('disabled', true);
-                    localStorage.setItem('authRequest', true);
                     app.auth.signUp.request({
                         email: email.find('input').val(),
                         password: password.find('input').val()
-                    });
+                    }, {wrap, email, password, button: buttonSignUp});
 
                 }
 
@@ -222,7 +246,7 @@ app.auth = {
             });
 
             buttonSignIn.on('click', () => {
-                if ( !localStorage.getItem('authRequest') ) {
+                if ( !sessionStorage.getItem('authRequest') ) {
                     wrap.removeClass('spaceInRight').addClass('spaceOutLeft');
                     if (!$('.auth_signin').length) {
                         app.auth.signIn.render(target);
@@ -242,17 +266,32 @@ app.auth = {
                 )
             )
         },
-        request: (data) => {
-            console.log( data.email, data.password, data.confirmPassword );
-            $.post('http://127.0.0.1:2207/auth/signup', data)
+        request: (data, el) => {
+            sessionStorage.setItem('authRequest', true);
+            el.wrap.addClass('loading');
+            el.button.addClass('loading').attr('disabled', true);
+
+            $.post(process.env.SERVER + '/auth/signup', data)
                 .done(res => {
-                    utils.page.clearAll();
-                    localStorage.setItem('isAuth', true);
-                    app.sidebar.render();
-                    app.content.render();
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
+
+                    if ( res.error ) {
+                        if ( res.error.code === 403 ) {
+                            app.auth.inputError(el.email)
+                        }
+                    } else {
+                        localStorage.setItem('token', res.token)
+                        utils.page.clearAll();
+                        app.sidebar.render();
+                        app.content.render();
+                    }
                 })
                 .catch(err => {
-                    console.log(err)
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
                 })
         }
     },
@@ -273,34 +312,24 @@ app.auth = {
             const buttonSignIn = $('<DIV/>', { class: 'auth_recover_signin', text: lang.pages.auth.recover.signIn });
             const buttonSignUp = $('<DIV/>', { class: 'auth_recover_signup', html: lang.pages.auth.recover.signUp });
 
-            buttonRecover.on('click', function () {
+            buttonRecover.on('click', () => {
                 let validate = true;
 
                 if ( !email.find('input').val() || !/\S+@\S+\.\S+/.test( email.find('input').val() ) ) {
                     validate = false;
-                    email.removeClass('error');
-                    email.addClass('error');
-                    clearTimeout( emailTimeout )
-                    emailTimeout = setTimeout(() => {
-                        email.removeClass('error');
-                        clearTimeout( emailTimeout )
-                    }, 2000)
+                    app.auth.inputError(email)
                 }
 
                 if ( validate ) {
                     email.removeClass('error');
-                    wrap.addClass('loading');
-                    $(this).addClass('loading').attr('disabled', true);
-                    localStorage.setItem('authRequest', true);
-                    app.auth.recover.request(
-                        wrap, {
-                        email: email.find('input').val()
-                    });
+                    app.auth.recover.request({
+                        email: email.find('input').val(),
+                    }, {wrap, email, button: buttonRecover});
                 }
             })
 
             buttonSignIn.on('click', () => {
-                if ( !localStorage.getItem('authRequest') ) {
+                if ( !sessionStorage.getItem('authRequest') ) {
                     wrap.removeClass('spaceInRight').addClass('spaceOutLeft')
                     if (!$('.auth_signin').length) {
                         app.auth.signIn.render(target);
@@ -311,7 +340,7 @@ app.auth = {
             })
 
             buttonSignUp.on('click', () => {
-                if ( !localStorage.getItem('authRequest') ) {
+                if ( !sessionStorage.getItem('authRequest') ) {
                     wrap.removeClass('spaceInRight').addClass('spaceOutLeft')
                     if (!$('.auth_signup').length) {
                         app.auth.signUp.render(target);
@@ -331,16 +360,64 @@ app.auth = {
             )
 
         },
-        request: (wrap, data) => {
-            console.log( data.email )
-            $.post('http://127.0.0.1:2207/auth/recover', data)
+        request: (data, el) => {
+            sessionStorage.setItem('authRequest', true);
+            el.wrap.addClass('loading');
+            el.button.addClass('loading').attr('disabled', true);
+
+            $.post( process.env.SERVER + '/auth/recover', data)
                 .done(res => {
-                    wrap.prepend( $('<DIV/>', { class: 'auth_message', html: [ svg.icon.email.sent, lang.pages.auth.recover.messages.newPassword] }) )
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
+                    if ( res.error ) {
+                        if (res.error.code === 400) {
+                            app.auth.inputError(el.email)
+                        }
+                    } else {
+                        el.wrap.prepend($('<DIV/>', {
+                            class: 'auth_message',
+                            html: [svg.icon.email.sent, lang.pages.auth.recover.messages.newPassword]
+                        }))
+                    }
                 })
                 .catch(err => {
-                    console.log(err)
+                    sessionStorage.removeItem('authRequest')
+                    el.wrap.removeClass('loading');
+                    el.button.removeClass('loading').attr('disabled', false)
                 })
 
+        }
+    },
+    inputError: (input) => {
+        input.addClass('error');
+        setTimeout(() => {
+            input.removeClass('error')
+        }, 2000)
+    },
+    language: {
+        render: ( target ) => {
+            const languageButton = $('<DIV/>', { class: 'language_button', html: [ svg.icon.world, lang.lang.button ] }).on('click', () => {
+                languageList.slideToggle();
+            });
+            const languageList = $('<DIV/>', { class: 'language_list' }).append(
+                $('<DIV/>', { class: localStorage.getItem('lang') == 'en' ? 'language_item active' : 'language_item', text: 'English' }).on('click', () => {
+                    localStorage.setItem('lang', 'en');
+                    location.reload();
+                }),
+                $('<DIV/>', { class: localStorage.getItem('lang') == 'ru' ? 'language_item active' : 'language_item', text: 'Русский' }).on('click', () => {
+                    localStorage.setItem('lang', 'ru');
+                    location.reload();
+                }),
+                $('<DIV/>', { class: 'language_item soon', text: 'Deutsch' }),
+                $('<DIV/>', { class: 'language_item soon', text: 'Español' }),
+                $('<DIV/>', { class: 'language_item soon', text: 'Français' }),
+                $('<DIV/>', { class: 'language_item soon', text: 'Italiano' }),
+            )
+
+            const language = $('<DIV/>', { class: 'language' })
+
+            target.append( language.append( languageButton, languageList ) );
         }
     }
 }

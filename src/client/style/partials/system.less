@@ -1,0 +1,45 @@
+.system {
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: 600;
+
+
+	svg {
+		display: block;
+		width: 100px;
+		height: 100px;
+
+		path {
+			fill: @white;
+		}
+	}
+
+	&_message {
+		color: @white;
+		margin-top: 32px;
+
+	}
+
+	&_button {
+		user-select: none;
+		color: @primary;
+		margin-top: 16px;
+		cursor: pointer;
+		transition: color .2s;
+
+		&:hover {
+			color: @primaryLight;
+		}
+	}
+}

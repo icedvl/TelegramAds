@@ -1,6 +1,15 @@
 .content {
+	z-index: 2;
+	position: relative;
 	background: @white;
 	border-radius: 20px;
 	flex: 1;
-	border: none;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	&_body {
+		height: calc(100% - 96px);
+	}
 }
+

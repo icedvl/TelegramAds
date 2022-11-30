@@ -2,19 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport", content="width=device-width, initial-scale=1.0">
         <meta
                 http-equiv="Content-Security-Policy"
-                content= "default-src 'none'; script-src 'self'; connect-src 'self' http://127.0.0.1:2207; img-src 'self'; style-src 'self'; font-src 'self';"
+                content= "default-src 'none'; script-src 'self'; connect-src 'self' http://127.0.0.1:7070; img-src 'self'; style-src 'self'; font-src 'self';"
         />
         <title>TelegramAds App</title>
         <link rel="stylesheet" href="assets/style/style.css">
     </head>
-    <body>
+    <body class="loading">
+        <svg viewBox="0 0 24 24" class="loader" xmlns="http://www.w3.org/2000/svg" fill="none"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.02 2.2C13.36 2.07 12.69 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-.68-.07-1.35-.2-1.99"/></svg>
         <div class="background">
             <div class="circle1"></div>
             <div class="circle2"></div>
             <div class="circle3"></div>
         </div>
+        <div class="curtain"></div>
 
         <script src="assets/script/script.js"></script>
     </body>

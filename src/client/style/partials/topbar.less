@@ -1,0 +1,39 @@
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 32px;
+	margin: 32px;
+	font-family: 'Montserrat', sans-serif;
+	color: @dark;
+	user-select: none;
+
+	&_title {
+		font-weight: 700;
+		font-size: 24px;
+	}
+
+	&_tabs {
+		display: flex;
+		font-weight: 700;
+		font-size: 14px;
+	}
+
+	&_tab {
+		padding: 8px 16px;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		margin-left: 8px;
+		cursor: pointer;
+		transition: color .2s, border-color .2s;
+
+		&:hover {
+			color: #307AE9;
+		}
+
+		&.active {
+			color: #307AE9;
+			border: 1px solid @primaryLight;
+		}
+	}
+}

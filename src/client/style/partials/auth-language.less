@@ -2,7 +2,7 @@
 	font-family: 'Montserrat';
 	z-index: 3;
 	position: absolute;
-	right: 0;
+	left: 0;
 	top: 0;
 	height: 100%;
 	font-size: 14px;
@@ -12,13 +12,13 @@
 	&_button {
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		font-weight: 600;
 		cursor: pointer;
 		transition: color .3s;
 
 		svg {
-			margin-left: 8px;
+			//margin-left: 8px;
+			margin-right: 8px;
 
 			path {
 				transition: stroke .3s;
@@ -39,6 +39,7 @@
 	&_list {
 		display: none;
 		padding-top: 16px;
+		padding-left: 32px;
 
 		div {
 			font-weight: 500;
@@ -49,8 +50,12 @@
 				color: @primary;
 			}
 
-			&:hover {
+			&:hover:not(.active, .soon) {
 				color: @primaryLight;
+			}
+
+			&.soon {
+				color: #555555;
 			}
 		}
 	}

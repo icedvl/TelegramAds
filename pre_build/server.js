@@ -1,22 +1,19 @@
 require('dotenv').config()
-const axios = require('axios')
-const express = require('express')
-const app = express()
+require('./pages/resources/accounts.js')
 
-app.post('/auth', function (req, res) {
+// const axios = require('axios')
+// const {ipcMain, app, dialog} = require("electron");
+// const fs = require("fs-extra");
+// const async = require("async");
+// const { Api, TelegramClient, Users } = require('telegram');
+// const { StringSession } = require('telegram/sessions');
+// const input = require('input');
 
-    axios.post( process.env.SERVER + '/auth', {
-        login: res.login,
-        pass: res.login
-    })
-        .then(res2 => {
-            res.sendStatus(200)
-        })
-        .catch(err => {
-            console.log( err )
-        })
 
-})
 
-app.listen(2207)
+
+
+
+
+
 

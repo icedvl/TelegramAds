@@ -1,0 +1,68 @@
+.checkbox {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #C3C8EE;
+	border-radius: 4px;
+	cursor: pointer;
+
+	svg {
+		display: none;
+		margin-left: 3px;
+		margin-top: 4px;
+	}
+}
+
+.selected .checkbox {
+	background: #EAECFF;
+
+	svg {
+		display: block;
+	}
+}
+
+
+.checkbox-all {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+
+	&:before {
+		content: '';
+		z-index: 1;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 4px;
+		background: #EAECFF;
+		border: 1px solid #EAECFF;
+		top: -5px;
+		left: -5px;
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		z-index: 2;
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 4px;
+		border: 1px solid #C3C8EE;
+		background: @white;
+	}
+
+	svg {
+		z-index: 3;
+		position: absolute;
+		top: 5px;
+		left: 4px;
+		display: none;
+	}
+
+	&.selected {
+		svg {
+			display: block;
+		}
+	}
+}
