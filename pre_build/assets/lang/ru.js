@@ -100,6 +100,7 @@ languages.ru = {
                     status: {
                       title: 'Статус',
                       options: {
+                        new: 'New',
                         active: 'Active',
                         floodWait: 'Flood Wait',
                         floodBan: 'Flood Ban',
@@ -136,6 +137,7 @@ languages.ru = {
             },
             rows: {
               statuses: {
+                new: 'New',
                 active: 'Active',
                 floodWait: 'Flood Wait',
                 floodBan: 'Flood Ban',
@@ -200,8 +202,13 @@ languages.ru = {
               added: {
                 success: ['Добавлен', 'Добавлено', 'Добавлено'],
                 accounts: ['аккаунт', 'аккаунта', 'аккаунтов'],
-                errors: 'Ошибки:',
-                addMore: 'Добавить еще аккаунтов'
+                errors: {
+                  title: 'Предупреждение:',
+                  bad: 'Ошибка',
+                  double: 'Уже добавлен'
+                },
+                addMore: 'Добавить еще аккаунтов',
+                nothing: 'Аккаунты не найдены'
               }
             }
           }

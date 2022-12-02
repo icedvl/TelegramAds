@@ -43,58 +43,68 @@ const defaultParams = {
                             selected: true,
                             order: 1
                         },
-                        group: {
-                            name: 'group',
+                        proxy: {
+                            name: 'proxy',
                             pinned: false,
                             selected: true,
                             order: 2
                         },
-                        actions: {
-                            name: 'actions',
-                            pinned: false,
-                            selected: true,
-                            order: 3
-                        },
+                        // group: {
+                        //     name: 'group',
+                        //     pinned: false,
+                        //     selected: true,
+                        //     order: 3
+                        // },
+                        // actions: {
+                        //     name: 'actions',
+                        //     pinned: false,
+                        //     selected: true,
+                        //     order: 4
+                        // },
                         messages: {
                             name: 'messages',
                             pinned: false,
                             selected: true,
-                            order: 4
+                            order: 5
                         },
                         invites: {
                             name: 'invites',
                             pinned: false,
                             selected: true,
-                            order: 5
+                            order: 6
                         },
                         reactions: {
                             name: 'reactions',
                             pinned: false,
                             selected: true,
-                            order: 6
+                            order: 7
                         },
                         reports: {
                             name: 'reports',
                             pinned: false,
                             selected: true,
-                            order: 7
+                            order: 8
                         },
                         votes: {
                             name: 'votes',
                             pinned: false,
                             selected: true,
-                            order: 8
+                            order: 9
                         },
                         check: {
                             name: 'check',
                             pinned: false,
                             selected: true,
-                            order: 9
+                            order: 10
                         }
                     },
                     filters: {
                         isFiltered: false,
                         status: {
+                            new: {
+                                name: 'new',
+                                selected: false,
+                            },
                             active: {
                                 name: 'active',
                                 selected: false,

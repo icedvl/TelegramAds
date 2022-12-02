@@ -71,10 +71,18 @@ app.auth = {
                     $(this).siblings('input').attr('type', 'password');
                 })
             );
-            const buttonSignIn = $('<BUTTON/>', { class: 'auth_signin_button' }).append(
-                $('<SPAN>', { class: 'button_text', text: lang.pages.auth.signIn.button }),
-                $('<SPAN/>', { class: 'button_loader', html: svg.loader })
-            );
+            // const buttonSignIn = $('<BUTTON/>', { class: 'auth_signin_button' }).append(
+            //     $('<SPAN>', { class: 'button_text', text: lang.pages.auth.signIn.button }),
+            //     $('<SPAN/>', { class: 'button_loader', html: svg.loader })
+            // );
+
+            const buttonSignIn = elements.button({
+                text: lang.pages.auth.signIn.button,
+                loader: true,
+                primary: true,
+                size: 'l'
+            })
+
             const buttonRecover = $('<DIV/>', {class: 'auth_signin_recover', text: lang.pages.auth.signIn.recover});
             const buttonSignUp = $('<DIV/>', {class: 'auth_signin_signup', html: lang.pages.auth.signIn.signUp});
 
@@ -146,7 +154,7 @@ app.auth = {
             el.button.addClass('loading').attr('disabled', true);
 
             $.post(process.env.SERVER + '/auth/signin', data)
-                .done(res => {
+                .done(async res => {
                     sessionStorage.removeItem('authRequest')
                     el.wrap.removeClass('loading');
                     el.button.removeClass('loading').attr('disabled', false)
@@ -159,7 +167,17 @@ app.auth = {
                         }
                     } else {
                         localStorage.setItem('token', res.token)
-                        utils.page.clearAll();
+
+                        $.ajaxSetup({
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Authorization': 'Bearer ' + localStorage.getItem('token')
+                            }
+                        });
+
+                        resources.accounts = await utils.getResources.accounts();
+                        $('body > .auth, body > .language').remove();
                         app.sidebar.render();
                         app.content.render();
                         utils.page.open( state.pages.open );
@@ -207,10 +225,13 @@ app.auth = {
                     $(this).siblings('input').attr('type', 'password');
                 })
             );
-            const buttonSignUp = $('<BUTTON/>', { class: 'auth_signup_button' }).append(
-                $('<SPAN>', { class: 'button_text', text: lang.pages.auth.signUp.button }),
-                $('<SPAN/>', { class: 'button_loader', html: svg.loader })
-            );
+            const buttonSignUp = elements.button({
+                text: lang.pages.auth.signUp.button,
+                loader: true,
+                primary: true,
+                size: 'l'
+            })
+
             const buttonSignIn = $('<DIV/>', {class: 'auth_signup_signin', html: lang.pages.auth.signUp.signIn});
 
             buttonSignUp.on('click', function () {
@@ -283,7 +304,7 @@ app.auth = {
                         }
                     } else {
                         localStorage.setItem('token', res.token)
-                        utils.page.clearAll();
+                        $('body > .auth, body > .language').remove();
                         app.sidebar.render();
                         app.content.render();
                     }
@@ -305,10 +326,12 @@ app.auth = {
                 $('<INPUT/>', { type: 'email', placeholder: lang.pages.auth.recover.placeholders.email }),
                 $('<DIV/>', { class: 'input_error', html: svg.icon.input.danger })
             );
-            const buttonRecover = $('<BUTTON/>', { class: 'auth_recover_button' }).append(
-                $('<SPAN>', { class: 'button_text', text: lang.pages.auth.recover.button }),
-                $('<SPAN/>', { class: 'button_loader', html: svg.loader })
-            );
+            const buttonRecover = elements.button({
+                text: lang.pages.auth.recover.button,
+                loader: true,
+                primary: true,
+                size: 'l'
+            })
             const buttonSignIn = $('<DIV/>', { class: 'auth_recover_signin', text: lang.pages.auth.recover.signIn });
             const buttonSignUp = $('<DIV/>', { class: 'auth_recover_signup', html: lang.pages.auth.recover.signUp });
 

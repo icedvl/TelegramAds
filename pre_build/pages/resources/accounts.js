@@ -2,12 +2,13 @@ const {ipcMain, app, dialog} = require("electron");
 const fs = require("fs-extra");
 const async = require("async");
 const tdataConverter = require('./tdata-converter.js').Main;
-const Account = require('./client/src/server/models/Account')
+const axios = require('axios');
 
 
 
 // Добавление новых аккаунтов из tdata
 ipcMain.on('addAccounts_tdata_req', (event, data) => {
+
 
     let apiId = process.env.API_ID;
     let apiHash = process.env.API_HASH;
@@ -48,46 +49,78 @@ ipcMain.on('addAccounts_tdata_req', (event, data) => {
 
         // проходим по собранным папкам tdata и получаем из них ключ сессии
         let errArray = [];
-        let newArray = [];
+        let tdataArray = [];
+        let tempArray = [];
         async.forEach(pathArray, (path, cb) => {
             tdataConverter(path)
-                .then( async data => {
+                .then( data => {
                     data.path = path;
-                    newArray.push(data);
+                    // разбиваем большой запрос на несколько
+                    if ( pathArray.length >= 50 ) {
+                        if (tempArray.length !== 50) {
+                            tempArray.push(data);
+                        } else {
+                            tdataArray.push(tempArray);
+                            tempArray = [];
+                        }
+                    } else {
+                        tempArray.push(data);
+                        tdataArray.push(tempArray);
+                        tempArray = [];
+                    }
                     cb();
                 })
-                .catch( async err => {
+                .catch( err => {
                     errArray.push({ path: path, type: 'bad'})
                     cb();
                 })
         }, () => {
-            // console.log( 'error', errArray )
-            // console.log( 'new', newArray )
-            let counter = 0;
 
-            // смотрим не добавлен ли такой аккаунт, если нет создаем новый
-            async.forEach(newArray, async (account, cb) => {
-                counter++;
-                let exist = await Account.find({ $or: [{ tdata_id: account.id, session: account.session }]});
-                if ( exist ) {
-                    newArray.splice(counter, 1);
-                    errArray.push({ path: data.path, type: 'double'});
-                    cb();
-                } else {
-                    new Account({
-                        init: {
-                            type: 'tdata',
-                            id: account.id,
-                            session: account.session
-                        },
-                        config: {
-                            api_id: apiId,
-                            api_hash: apiHash
+            console.log( tdataArray )
+
+            let newArray = [];
+            let newAccountCounter = 0;
+
+            async.forEach( tdataArray, (requestArray, callback) => {
+
+
+
+                axios.post(
+                    process.env.SERVER + '/accounts/add',
+                    {
+                        accounts: requestArray,
+                        api_id: apiId,
+                        api_hash: apiHash
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                            'Authorization': 'Bearer ' + data.token,
+                        }
+                    }
+                )
+                    .then(res => {
+                        if ( res.data && res.data.newArray ) {
+                            res.data.newArray.forEach( account => newArray.push(account));
+                            newAccountCounter += res.data.newArray.length
+                        }
+                        if ( res.data && res.data.errArray ) { res.data.errArray.forEach( account => errArray.push(account)) }
+                        callback();
+
+                    })
+                    .catch( err => {
+                        if ( err.response && ( err.response.status === 401 || err.response.status === 403 ) ) {
+                            event.sender.send('logout' );
+                        } else {
+                            console.log( err )
+                            callback();
                         }
                     })
-                }
+
             }, () => {
-                event.sender.send('addAccounts_tdata_res', { added: newArray.length, error: errArray });
+
+                event.sender.send('addAccounts_tdata_res', { added: newArray, error: errArray });
+
             })
         })
     } else {

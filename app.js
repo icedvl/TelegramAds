@@ -21,6 +21,7 @@ function createWindow() {
         height: 800,
         backgroundColor: '#121423',
         webPreferences: {
+            devTools: !app.isPackaged,
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,

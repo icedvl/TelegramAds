@@ -4,6 +4,8 @@
 	height: 100%;
 
 	&_header {
+		z-index: 2;
+		position: relative;
 		display: flex;
 		flex-direction: column;
 
@@ -13,10 +15,20 @@
 			align-items: center;
 			height: 48px;
 			padding: 8px 32px;
+
+			& > * {
+				margin-left: 16px;
+
+				&:first-child {
+					margin-left: 0;
+				}
+			}
 		}
+
 	}
 
 	&_body {
+		z-index: 1;
 		position: relative;
 		flex: 1;
 		display: flex;
@@ -68,6 +80,10 @@
 			display: table-row;
 			transition: background .2s linear;
 
+			&.hide {
+				display: none!important;
+			}
+
 			&:nth-child(odd) .table_cell {
 				background: #F9F9FF;
 			}
@@ -78,9 +94,17 @@
 				}
 			}
 
+
+			&.status-new .cell-status {
+				background: #dbdeff;
+				color: @primary;
+				padding: 0;
+			}
+
 			&.status-active .cell-status {
 				background: #EBFFEC;
 				color: #227926;
+				padding: 0;
 			}
 
 
@@ -206,7 +230,7 @@
 				display: flex;
 				align-items: center;
 
-				&:last-child {
+				&:last-child:not(.cell-status) {
 					padding-right: 8px;
 				}
 
@@ -236,6 +260,8 @@
 	}
 
 	&_footer {
+		z-index: 2;
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -244,18 +270,9 @@
 		padding: 8px 32px;
 	}
 
-	.button-columns {
-		margin-left: 16px;
-	}
-
-	.button-check {
-		margin: 0 16px;
-	}
-
 	&_search {
 		position: relative;
 		flex: 1;
-		margin: 0 16px;
 		border-radius: 8px;
 		border: 1px solid #C3C8EE;
 		height: 100%;
@@ -306,9 +323,11 @@
 	}
 
 	.rows-on-page {
+		width: 180px;
 		font-size: 12px;
 		display: flex;
 		user-select: none;
+		align-items: center;
 
 		&_title {
 			padding: 8px 0;
@@ -341,7 +360,8 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding: 8px;
+			height: 32px;
+			padding: 0 8px;
 			border-radius: 8px;
 			border: 1px solid #d2d2d2;
 			cursor: pointer;
@@ -366,14 +386,49 @@
 	}
 
 	.total {
+		width: 180px;
 		font-size: 12px;
 		padding: 8px 0;
 		color: #757681;
 		font-weight: 500;
 		user-select: none;
+		text-align: right;
 	}
 
-	&_pagination {
+	.pagination {
 		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow-x: auto;
+
+		&_page {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 32px;
+			height: 32px;
+			margin: 0 5px;
+			transition: color .2s, border-color .2s;
+			border: 1px solid transparent;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 12px;
+			color: @dark;
+			cursor: pointer;
+			border-radius: 8px;
+			user-select: none;
+			background: @white;
+
+			&:hover {
+				color: #216BD9;
+			}
+
+			&.active {
+				color: #216BD9;
+				border-color: #C3C8EE;
+				cursor: default;
+			}
+		}
 	}
 }

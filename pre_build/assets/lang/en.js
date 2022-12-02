@@ -99,6 +99,7 @@ languages.en = {
                     status: {
                       title: 'Status',
                       options: {
+                        new: 'New',
                         active: 'Active',
                         floodWait: 'Flood Wait',
                         floodBan: 'Flood Ban',
@@ -135,6 +136,7 @@ languages.en = {
             },
             rows: {
               statuses: {
+                new: 'New',
                 active: 'Active',
                 floodWait: 'Flood Wait',
                 floodBan: 'Flood Ban',
@@ -199,8 +201,13 @@ languages.en = {
               added: {
                 success: ['Added', 'Added', 'Added'],
                 accounts: ['account', 'accounts', 'accounts'],
-                errors: 'Errors:',
-                addMore: 'Add more accounts'
+                errors: {
+                  title: 'Warnings',
+                  bad: 'Error',
+                  double: 'Already exist'
+                },
+                addMore: 'Add more accounts',
+                nothing: 'Accounts not found'
               }
             }
           }

@@ -100,6 +100,7 @@ languages.ru = {
                     status: {
                       title: 'Статус',
                       options: {
+                        new: 'New',
                         active: 'Active',
                         floodWait: 'Flood Wait',
                         floodBan: 'Flood Ban',
@@ -136,6 +137,7 @@ languages.ru = {
             },
             rows: {
               statuses: {
+                new: 'New',
                 active: 'Active',
                 floodWait: 'Flood Wait',
                 floodBan: 'Flood Ban',

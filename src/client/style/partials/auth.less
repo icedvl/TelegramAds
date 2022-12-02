@@ -76,55 +76,6 @@
 		}
 	}
 
-	button {
-		font-family: 'Montserrat', sans-serif;
-		width: 350px;
-		height: 50px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 8px 0;
-		border: 0;
-		background: green;
-		border-radius: 8px;
-		font-weight: 700;
-		font-size: 16px;
-		line-height: 20px;
-		color: @white;
-		cursor: pointer;
-		background: linear-gradient(180deg, #8F7CFF 0%, #7761FF 50%, #604DD6 100%);
-		transition: .2s background-position linear;
-		background-size: 100% 200%;
-		background-position: 0 100%;
-		user-select: none;
-		
-		&:hover:not(:disabled) {
-			background-position: 0 0;
-		}
-
-		&:active:not(:disabled) {
-			padding-top: 12px;
-			background: linear-gradient(180deg, #44359F 0%, #604DD6 100%);
-		}
-
-		.button_loader {
-			display: none;
-			width: 24px;
-			height: 24px;
-			position: absolute;
-			animation: loaderRotate .5s infinite linear;
-		}
-
-		&.loading {
-			.button_text {
-				display: none;
-			}
-			.button_loader {
-				display: block;
-			}
-		}
-	}
-
 	&_message {
 		position: absolute;
 		top: -40px;

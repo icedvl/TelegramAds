@@ -15,12 +15,19 @@ let state = {
     params: JSON.parse( localStorage.getItem('params') ) || defaultParams,
 }
 
+let resources = {};
+
 const app = {
     pages: {}
 };
 
 
 (async () => {
+
+    ipcRenderer.on('logout', () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    })
 
     // console.log( state )
 
@@ -52,10 +59,14 @@ const app = {
 
             // проверяем авторизацию
             if (await app.auth.check()) {
+
+                resources.accounts = await utils.getResources.accounts();
                 $('body').removeClass('loading').addClass('authorized');
                 app.sidebar.render();
                 app.content.render();
                 utils.page.open( state.pages.open );
+
+                // console.log( resources )
 
             } else {
                 $('body').removeClass('loading')

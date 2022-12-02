@@ -1,1638 +1,16 @@
 app.pages.resources.tabs.accounts = {
-    demoAccounts5: [
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-    ],
-    demoAccounts: [
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #1',
-            proxy: null,
-            group: null,
-            messages: 30,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodBan',
-            floodTime: null,
-            name: 'Account #2',
-            proxy: null,
-            group: null,
-            messages: 50,
-            invites: 4,
-            reactions: 3,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'active',
-            floodTime: null,
-            name: 'Account #3',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 3,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'ban',
-            floodTime: null,
-            name: 'Account #4',
-            proxy: null,
-            group: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'Группа 1'
-            },
-            messages: 22,
-            invites: 183,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-        {
-            id: '63274cb08f1ab010bc70010d',
-            status: 'floodWait',
-            floodTime: {
-                hours: 4,
-                minutes: 0
-            },
-            name: 'Account #5',
-            proxy: {
-                id: '63274cb08f1ab010bc70010d',
-                title: 'fjlds:adsf3@123.112.84.22:4492'
-            },
-            group: null,
-            messages: 22,
-            invites: 6,
-            reactions: 10,
-            reports: 0,
-            votes: 0
-        },
-    ],
     render: () => {
-        // TODO: получать с сервера или из стейта добавленные аккаунты
-        let accounts;
-        accounts = null || app.pages.resources.tabs.accounts.demoAccounts;
 
         const table = $('<DIV/>', { class: 'table resource_table' });
         table.append(
             app.pages.resources.tabs.accounts.header.render(),
-            app.pages.resources.tabs.accounts.body.render(accounts),
+            app.pages.resources.tabs.accounts.body.render(),
             app.pages.resources.tabs.accounts.footer.render(),
         )
 
         $('.content_body').append( table )
 
-        if (accounts) {
+        if (resources.accounts.length) {
 
             // пересчитываем ширину ячеек
             app.pages.resources.tabs.accounts.body.colSort($('.table_caption .pinned_inner'), $('.table_caption .pinned_inner .table_cell'));
@@ -1653,7 +31,6 @@ app.pages.resources.tabs.accounts = {
             const tableHeader = $('<DIV/>', { class: 'table_header' });
             const tableHeaderRow1 = $('<DIV/>', { class: 'table_header_row' });
 
-
             tableHeaderRow1.append(
                 app.pages.resources.tabs.accounts.addAccounts.btn.render(),
                 app.pages.resources.tabs.accounts.header.search.render(),
@@ -1669,21 +46,18 @@ app.pages.resources.tabs.accounts = {
             );
             const groups = $('<DIV/>', { class: 'table_groups' });
             const btnAddToGroup = $('<DIV/>', { class: 'button button-add-to-group', html: svg.icon.add, title: lang.pages.resources.tabs.accounts.table.header.actions.addToGroup });
-            const btnCheck = $('<DIV/>', { class: 'button button-check', html: svg.icon.check, title: lang.pages.resources.tabs.accounts.table.header.actions.check });
-            const btnRemove = $('<DIV/>', { class: 'button button-remove', html: svg.icon.remove, title: lang.pages.resources.tabs.accounts.table.header.actions.remove })
             tableHeaderRow2.append(
                 btnCreateGroup,
                 groups.append( app.pages.resources.tabs.accounts.header.groups.render(['Группа 1','Группа 2', 'Группа 3', 'Группа 4']) ),
                 btnAddToGroup,
-                btnCheck,
-                btnRemove
+                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                app.pages.resources.tabs.accounts.header.checkAll.btn.render()
             )
 
             tableHeader.append(
                 tableHeaderRow1,
-                tableHeaderRow2
+                // tableHeaderRow2
             )
-            // app.pages.resources.tabs.accounts.header.columns.popup.render()
 
             return tableHeader;
 
@@ -1691,12 +65,13 @@ app.pages.resources.tabs.accounts = {
         columns: {
             btn: {
                 render: () => {
-                    return $('<DIV/>', {
-                        class: 'button button-columns',
-                        html: svg.icon.columns,
+                    return elements.button({
+                        class: 'button-columns',
+                        icon: svg.icon.columns,
                         title: lang.pages.resources.tabs.accounts.table.header.columns.button
                     })
                         .on('click', app.pages.resources.tabs.accounts.header.columns.popup.render )
+
                 }
             },
             popup: {
@@ -1808,7 +183,8 @@ app.pages.resources.tabs.accounts = {
             btn: {
                 render: () => {
 
-                    let button =  $('<DIV/>', { class: 'button button-filter' }).on('click', app.pages.resources.tabs.accounts.header.filter.popup.render )
+                    let button = elements.button({ class: 'button-filter' });
+                    button.on('click', app.pages.resources.tabs.accounts.header.filter.popup.render )
 
                     if ( state.params.pages.resources.tabs.accounts.filters.isFiltered ) {
                         app.pages.resources.tabs.accounts.header.filter.btn.filtered( button )
@@ -1913,26 +289,47 @@ app.pages.resources.tabs.accounts = {
                 }
                 if ( params.isFiltered ) {
 
-                    $('.table_content .table_row').hide();
-                    for (const key in params.status) {
-                        if ( params.status[key].selected ) {
-                            $('.table_content').find(`.table_row.status-${key}`).show();
-                        }
-                    }
-
                     app.pages.resources.tabs.accounts.header.filter.btn.filtered( $('.table_header .button-filter') )
 
+                   let counter = 0;
+                    resources.accounts.forEach(account => {
+                        account.render.row.filtered = false;
+
+                        for (const key in params.status) {
+                            if ( params.status[key].selected ) {
+                                if ( account.status.toLowerCase() === key ) {
+                                    account.render.row.filtered = true;
+                                    counter++;
+                                }
+                            }
+                        }
+
+                    })
+
                 } else {
+
                     params.isFiltered = false;
                     for (const key in params.status ) {
                         params.status[ key ].selected = false;
                     }
-                    $('.table_content .table_row').show();
+
+                    resources.accounts.forEach(( account, i ) => {
+                        account.render.row.filtered = false;
+                    })
+
+
                 }
+
+
+                $('.table_header_row .button-check').remove();
+                $('.table_header_row .button-remove').remove();
 
                 state.params.pages.resources.tabs.accounts.filters = params;
                 localStorage.setItem('params', JSON.stringify(state.params));
                 elements.popup.destroy();
+
+
+                app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
 
             },
             clear: (params) => {
@@ -1940,12 +337,24 @@ app.pages.resources.tabs.accounts = {
                 for (const key in params.status ) {
                     params.status[ key ].selected = false;
                 }
-                $('.table_content .table_row').show();
+
+                app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
+
+                resources.accounts.forEach( account => {
+                    account.render.row.filtered = false;
+                })
+
+
+                $('.table_header_row .button-check').remove();
+                $('.table_header_row .button-remove').remove();
+
                 state.params.pages.resources.tabs.accounts.filters = params;
                 localStorage.setItem('params', JSON.stringify( state.params ));
                 elements.popup.destroy();
 
-                app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
+
+                app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
+
             }
         },
         groups: {
@@ -1976,42 +385,105 @@ app.pages.resources.tabs.accounts = {
             search: (input) => {
                 let request = input.val();
                 if ( request ) {
-                    $('.table_content .table_row').hide()
+                    $('.table_content .table_row').addClass('hide')
                     $('.table_content .table_row').each((i, item) => {
                         if ( $(item).find('.cell-name').text().toLowerCase().indexOf(request) !== -1
                             || $(item).find('.cell-id').text().toLowerCase().indexOf(request) !== -1 ) {
-                            $(item).show();
+                            $(item).removeClass('hide');
                         }
                     })
                 } else {
-                    $('.table_content .table_row').show();
+                    $('.table_content .table_row').removeClass('hide');
+                }
+            }
+        },
+        checkAll: {
+            btn: {
+                render: () => {
+                    return elements.button({
+                        class: 'button-check',
+                        icon: svg.icon.check,
+                        title: lang.pages.resources.tabs.accounts.table.header.actions.check
+                    })
+                }
+            }
+        },
+        removeAll: {
+            btn: {
+                render: () => {
+                    return elements.button({
+                        class: 'button-remove',
+                        icon: svg.icon.remove,
+                        title: lang.pages.resources.tabs.accounts.table.header.actions.remove
+                    })
                 }
             }
         }
     },
     body: {
-        render: (accounts) => {
+        render: () => {
 
             const tableBody = $('<DIV/>', { class: 'table_body' });
             const tableContent = $('<DIV/>', { class: 'table_content' });
-
 
             const tableNothing = $('<DIV/>', { class: 'table_body_nothing' }).append(
                 app.pages.resources.tabs.accounts.addAccounts.btn.render()
             );
 
-            if ( !accounts ) {
+            if ( !resources.accounts.length ) {
                 tableBody.append( tableNothing )
             } else {
-
-                // TODO: показывать выбранное количество строк на странице, на остальные создавать пагинацию
 
                 tableBody.append(
                     tableContent.append(
                         app.pages.resources.tabs.accounts.body.caption.render(),
-                        app.pages.resources.tabs.accounts.body.rows.render( accounts )
                     )
                 )
+
+                resources.accounts.forEach((account, i) => {
+                    if ( !account.render ) {
+                        account.render = {
+                            row: {
+                                filtered: false,
+                                show: true,
+                                selected: false,
+                                el: null,
+                                set visability(value) {
+                                    if (value) {
+                                        this.show = true;
+                                        this.el.removeClass('hide')
+                                    } else {
+                                        this.show = false;
+                                        this.el.addClass('hide')
+                                    }
+                                },
+                                set select(value) {
+                                    if (value) {
+                                        this.selected = true;
+                                        this.el.addClass('selected')
+                                    } else {
+                                        this.selected = false;
+                                        this.el.removeClass('selected');
+                                        this.el.closest('.table_content').find('.checkbox-all').removeClass('selected')
+                                    }
+                                }
+                            }
+                        };
+                    }
+                    account.render.row.el = app.pages.resources.tabs.accounts.body.rows.render( account );
+
+                    tableBody.append(
+                        tableContent.append(
+                            account.render.row.el
+                        )
+                    )
+
+                    if ( i + 1 > state.params.pages.resources.tabs.accounts.rowsOnPage ) {
+                        account.render.row.visability = false;
+                    }
+                })
+
+
                 tableBody.scroll(() => {
                     if ( tableBody.scrollLeft() > 3 ) {
                         tableBody.addClass('scrolled')
@@ -2058,19 +530,32 @@ app.pages.resources.tabs.accounts = {
                             $('<DIV/>', { class: 'checkbox-all' })
                                 .append( svg.check )
                                 .on('click', function () {
-                                    app.pages.resources.tabs.accounts.body.caption.columns.select.select( $(this) )
+                                    if ( $(this).closest('.checkbox-all').hasClass('selected') ) {
+                                        $(this).closest('.checkbox-all').removeClass('selected')
+                                        resources.accounts.forEach((account, i) => {
+                                            account.render.row.select = false
+                                        })
+
+                                        $('.table_header_row .button-check').remove();
+                                        $('.table_header_row .button-remove').remove();
+                                    } else {
+                                        $(this).closest('.checkbox-all').addClass('selected')
+                                        resources.accounts.forEach((account, i) => {
+                                            if (account.render.row.show) {
+                                                account.render.row.select = true
+                                            }
+                                        })
+                                        if (!$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
+                                            $('.table_header_row:first-child').append(
+                                                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                app.pages.resources.tabs.accounts.header.checkAll.btn.render()
+                                            )
+                                        }
+                                    }
+
                                 })
 
                         );
-                    },
-                    select: ( el ) => {
-                        if ( el.closest('.checkbox-all').hasClass('selected') ) {
-                            el.closest('.checkbox-all').removeClass('selected')
-                            $('.table_row').removeClass('selected')
-                        } else {
-                            el.closest('.checkbox-all').addClass('selected')
-                            $('.table_row').addClass('selected')
-                        }
                     },
                 },
                 id: {
@@ -2135,50 +620,38 @@ app.pages.resources.tabs.accounts = {
                 },
                 check: {
                     render: (item) => {
-                        return $('<DIV/>', { class: 'table_cell cell-check-selected', 'data-order': item.order }).append( svg.icon.check ).on('click', () => { app.pages.resources.tabs.accounts.body.caption.columns.check.check() })
-                    },
-                    check: () => {
-
-                    },
-                },
+                        return $('<DIV/>', { class: 'table_cell cell-check', 'data-order': item.order })
+                    }
+                }
             }
         },
         rows: {
-            render: (accounts) => {
+            render: (account) => {
                 let items = state.params.pages.resources.tabs.accounts.columns;
 
-                let createdRows = [];
-                accounts.forEach(account => {
+                let row = $('<DIV/>', {class: 'table_row status-' + account.status.toLowerCase()})
+                let rowPinnedCols = $('<DIV/>', {class: 'pinned'}).append(
+                    $('<DIV/>', {class: 'pinned_inner'})
+                );
 
-                    let row = $('<DIV/>', { class: 'table_row status-' + account.status });
-                    let rowPinnedCols = $('<DIV/>', { class: 'pinned' }).append(
-                        $('<DIV/>', { class: 'pinned_inner' })
-                    );
-
-
-                    for (const key in items) {
-                        let item = items[key];
-                        if ( item.selected ) {
-                            if (item.pinned) {
-                                rowPinnedCols.find('.pinned_inner').append(
-                                    app.pages.resources.tabs.accounts.body.rows.columns[item.name].render(item, account)
-                                )
-                            } else {
-                                row.append(
-                                    app.pages.resources.tabs.accounts.body.rows.columns[item.name].render(item, account)
-                                )
-                            }
+                for (const key in items) {
+                    let item = items[key];
+                    if (item.selected) {
+                        if (item.pinned) {
+                            rowPinnedCols.find('.pinned_inner').append(
+                                app.pages.resources.tabs.accounts.body.rows.columns[item.name].render(item, account)
+                            )
+                        } else {
+                            row.append(
+                                app.pages.resources.tabs.accounts.body.rows.columns[item.name].render(item, account)
+                            )
                         }
                     }
+                }
 
-                    row.prepend( rowPinnedCols )
+                row.prepend(rowPinnedCols)
 
-
-                    createdRows.push( row );
-                })
-
-
-                return createdRows;
+                return row;
             },
             columns: {
                 select: {
@@ -2187,30 +660,48 @@ app.pages.resources.tabs.accounts = {
                             $('<DIV/>', { class: 'checkbox' })
                                 .append( svg.check )
                                 .on('click', function() {
-                                    app.pages.resources.tabs.accounts.body.rows.columns.select.select( $(this) )
+                                    account.render.row.select = !account.render.row.selected;
+
+                                    if ( account.render.row.selected ) {
+
+                                        if ( !$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
+                                            $('.table_header_row:first-child').append(
+                                                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                app.pages.resources.tabs.accounts.header.checkAll.btn.render()
+                                            )
+                                        }
+
+                                    } else {
+                                        let select = false;
+                                        resources.accounts.forEach((account, i) => {
+                                            if ( account.render.row.selected ) {
+                                                select = true;
+                                            }
+                                        })
+
+                                        if ( !select ) {
+                                            $('.table_header_row .button-check').remove();
+                                            $('.table_header_row .button-remove').remove();
+                                        }
+                                    }
+
                                 })
                         )
-                    },
-                    select: ( el ) => {
-                        el.closest('.table_row').toggleClass('selected')
                     }
                 },
                 id: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-id', 'data-order': item.order, text: account.id })
-                            .on('click', function() {
-                                app.pages.resources.tabs.accounts.body.rows.columns.select.select( $(this) )
-                            });
+                        return $('<DIV/>', { class: 'table_cell cell-id', 'data-order': item.order, text: account._id })
                     }
                 },
                 status: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-status', 'data-order': item.order, text: lang.pages.resources.tabs.accounts.table.rows.statuses[ account.status ] });
+                        return $('<DIV/>', { class: 'table_cell cell-status', 'data-order': item.order, text: lang.pages.resources.tabs.accounts.table.rows.statuses[ account.status.toLowerCase() ] });
                     }
                 },
                 name: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.name }).on('click', app.pages.resources.tabs.accounts.body.rows.columns.name.change)
+                        return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.config.name }).on('click', app.pages.resources.tabs.accounts.body.rows.columns.name.change)
                     },
                     change: () => {
                         console.log('Заглушка: Попап с инпутом для смены имени')
@@ -2219,9 +710,9 @@ app.pages.resources.tabs.accounts = {
                 floodTime: {
                     render: (item, account) => {
                         const floodTimeCol = $('<DIV/>', { class: 'table_cell cell-floodTime', 'data-order': item.order });
-                        if ( account.floodTime ) {
+                        if ( account.banTime ) {
                             floodTimeCol.text(
-                                app.pages.resources.tabs.accounts.body.rows.columns.floodTime.convertTime( account.floodTime )
+                                app.pages.resources.tabs.accounts.body.rows.columns.floodTime.convertTime( account.banTime )
                             )
                         }
                         return floodTimeCol
@@ -2239,7 +730,7 @@ app.pages.resources.tabs.accounts = {
                 },
                 proxy: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-proxy' + ( account.proxy ? ' added' : '' ), 'data-order': item.order, text: account.proxy ? account.proxy.title : lang.pages.resources.tabs.accounts.table.rows.addProxy })
+                        return $('<DIV/>', { class: 'table_cell cell-proxy' + ( account.proxy ? ' added' : '' ), 'data-order': item.order, text: account.proxy.title ? account.proxy.title : lang.pages.resources.tabs.accounts.table.rows.addProxy })
                             .on('click', app.pages.resources.tabs.accounts.body.rows.columns.proxy.change);
                     },
                     change: () => {
@@ -2280,27 +771,27 @@ app.pages.resources.tabs.accounts = {
                 },
                 messages: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-messages', 'data-order': item.order, text: account.messages });
+                        return $('<DIV/>', { class: 'table_cell cell-messages', 'data-order': item.order, text: account.stats.messages.sent });
                     }
                 },
                 invites: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-invites', 'data-order': item.order, text: account.invites });
+                        return $('<DIV/>', { class: 'table_cell cell-invites', 'data-order': item.order, text: account.stats.invites.sent });
                     }
                 },
                 reactions: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-reactions', 'data-order': item.order, text: account.reactions });
+                        return $('<DIV/>', { class: 'table_cell cell-reactions', 'data-order': item.order, text: account.stats.reactions.sent });
                     }
                 },
                 reports: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-reports', 'data-order': item.order, text: account.reports });
+                        return $('<DIV/>', { class: 'table_cell cell-reports', 'data-order': item.order, text: account.stats.reports.sent });
                     }
                 },
                 votes: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-votes', 'data-order': item.order, text: account.votes });
+                        return $('<DIV/>', { class: 'table_cell cell-votes', 'data-order': item.order, text: account.stats.votes.sent });
                     }
                 },
                 check: {
@@ -2312,7 +803,7 @@ app.pages.resources.tabs.accounts = {
                     check: (account) => {
                         console.log('Заглушка: проверка аккаунта', account.id);
                     },
-                },
+                }
             }
         },
         colSort: (parent, els) => {
@@ -2355,56 +846,178 @@ app.pages.resources.tabs.accounts = {
             $('.table_header').after(
                 app.pages.resources.tabs.accounts.body.render()
             )
-            app.pages.resources.tabs.accounts.body.colSort( $('.table_caption .pinned_inner'), $('.table_caption .pinned_inner .table_cell') );
-            app.pages.resources.tabs.accounts.body.colSort( $('.table_caption'), $('.table_caption > .table_cell') );
+
+            app.pages.resources.tabs.accounts.body.colSort($('.table_caption .pinned_inner'), $('.table_caption .pinned_inner .table_cell'));
+            app.pages.resources.tabs.accounts.body.colSort($('.table_caption'), $('.table_caption > .table_cell'));
             $('.table_row').each((i, item) => {
-                app.pages.resources.tabs.accounts.body.colSort( $(item).find('.pinned_inner'), $(item).find('.pinned_inner .table_cell') );
-                app.pages.resources.tabs.accounts.body.colSort( $(item), $(item).find('> .table_cell') );
+                app.pages.resources.tabs.accounts.body.colSort($(item).find('.pinned_inner'), $(item).find('.pinned_inner .table_cell'));
+                app.pages.resources.tabs.accounts.body.colSort($(item), $(item).find('> .table_cell'));
             })
 
             app.pages.resources.tabs.accounts.body.colCalcWidth();
+
+            app.pages.resources.tabs.accounts.header.filter.filtering(state.params.pages.resources.tabs.accounts.filters)
+
         }
     },
     footer: {
         render: () => {
             const tableFooter = $('<DIV/>', { class: 'table_footer' });
-            const rowsOnPage = $('<DIV/>', { class: 'rows-on-page' });
-            const rowsOnPageTitle = $('<DIV/>', { class: 'rows-on-page_title', text: lang.pages.resources.tabs.accounts.table.footer.rowsOnPage });
-            const rowsOnPageSelect = $('<DIV/>', { class: 'rows-on-page_select' }).on('click', function() { $(this).find('.rows-on-page_options').slideToggle(300); $(this).toggleClass('active') });
-            const rowsOnPageSelectResult = $('<DIV/>', { class: 'rows-on-page_result', text: state.params.pages.resources.tabs.accounts.rowsOnPage })
-            const rowsOnPageSelectOptions = $('<DIV/>', { class: 'rows-on-page_options' }).append(
-                $('<DIV/>', { text: '20' }),
-                $('<DIV/>', { text: '50' }),
-                $('<DIV/>', { text: '100' }),
-                $('<DIV/>', { text: '250' }),
-                $('<DIV/>', { text: '500' })
-            );
-
-            rowsOnPage.append(
-                rowsOnPageTitle,
-                rowsOnPageSelect.append(
-                    rowsOnPageSelectOptions,
-                    rowsOnPageSelectResult,
-                    svg.arrows.tableSelect
-                )
-            )
-
-            const totalAccounts = $('<DIV/>', { class: 'total', text: '1 - 20' + ' ' + lang.pages.resources.tabs.accounts.table.footer.of + ' ' + '332' })
 
             tableFooter.append(
-                rowsOnPage,
+                app.pages.resources.tabs.accounts.footer.rowsOnPage.render(),
                 app.pages.resources.tabs.accounts.footer.pagination.render(),
-                totalAccounts
+                app.pages.resources.tabs.accounts.footer.total.render(1, resources.accounts.length)
             )
 
             return tableFooter;
         },
-        pagination: {
+        rowsOnPage: {
             render: () => {
-                const pagination = $('<DIV/>', { class: 'pagination'});
-                return pagination;
+                const rowsOnPage = $('<DIV/>', { class: 'rows-on-page' });
+                const rowsOnPageTitle = $('<DIV/>', { class: 'rows-on-page_title', text: lang.pages.resources.tabs.accounts.table.footer.rowsOnPage });
+                const rowsOnPageSelect = $('<DIV/>', { class: 'rows-on-page_select' }).on('click', function() { $(this).find('.rows-on-page_options').slideToggle(300); $(this).toggleClass('active') });
+                const rowsOnPageSelectResult = $('<DIV/>', { class: 'rows-on-page_result', text: state.params.pages.resources.tabs.accounts.rowsOnPage })
+                const rowsOnPageSelectOptions = $('<DIV/>', { class: 'rows-on-page_options' }).append(
+                    $('<DIV/>', { text: '20' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(20, rowsOnPageSelectResult) }),
+                    $('<DIV/>', { text: '50' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(50, rowsOnPageSelectResult) }),
+                    $('<DIV/>', { text: '100' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(100, rowsOnPageSelectResult) }),
+                    $('<DIV/>', { text: '250' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(250, rowsOnPageSelectResult) }),
+                    $('<DIV/>', { text: '500' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(500, rowsOnPageSelectResult) }),
+                    $('<DIV/>', { text: '1000' }).on('click', () => { app.pages.resources.tabs.accounts.footer.rowsOnPage.change(1000, rowsOnPageSelectResult) })
+                );
+
+                return rowsOnPage.append(
+                    rowsOnPageTitle,
+                    rowsOnPageSelect.append(
+                        rowsOnPageSelectOptions,
+                        rowsOnPageSelectResult,
+                        svg.arrows.tableSelect
+                    )
+                )
+            },
+            change: (sum, resultEl) => {
+                // меняем кофиг
+                state.params.pages.resources.tabs.accounts.rowsOnPage = sum;
+                localStorage.setItem('params', JSON.stringify( state.params ))
+                resultEl.text( state.params.pages.resources.tabs.accounts.rowsOnPage )
+
+                $('.table_header_row .button-check').remove();
+                $('.table_header_row .button-remove').remove();
+
+                app.pages.resources.tabs.accounts.body.colUpdate();
+                app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
             }
         },
+        pagination: {
+            render: () => {
+                return $('<DIV/>', { class: 'pagination'});
+            },
+            update: ( pagination ) => {
+                pagination.find('.pagination_page').remove();
+
+                let accounts = [];
+                if ( state.params.pages.resources.tabs.accounts.filters.isFiltered ) {
+                    resources.accounts.forEach(account => {
+                        if ( account.render.row.filtered ) {
+                            accounts.push(account);
+                        }
+                        account.render.row.visability = false;
+                        account.render.row.select = false;
+                    })
+                } else {
+                    accounts = resources.accounts;
+                }
+
+
+
+                const rowsOnPage = state.params.pages.resources.tabs.accounts.rowsOnPage;
+                let pageCount = Math.ceil( accounts.length / state.params.pages.resources.tabs.accounts.rowsOnPage )
+
+
+                accounts.forEach((account, accountIndex) => {
+                    account.render.row.select = false;
+
+                    if ( accountIndex <= rowsOnPage - 1 ) {
+                        account.render.row.visability = true;
+                    } else {
+                        account.render.row.visability = false;
+                    }
+                })
+
+                app.pages.resources.tabs.accounts.footer.total.update(accounts.length, 1)
+
+
+                for (let i = 1; i < pageCount + 1; i++) {
+                    let pageButton = $('<BUTTON/>', { class: 'pagination_page', text: i })
+                    if ( i === 1 ) {
+                        pageButton.addClass('active')
+                    }
+
+                    pageButton.on('click', function () {
+                        $('.pagination_page').removeClass('active');
+                        $(this).addClass('active')
+
+                        accounts.forEach((account, accountIndex) => {
+                            account.render.row.select = false;
+
+                            if ( accountIndex >= ((i - 1) * rowsOnPage) && accountIndex < ( i * rowsOnPage ) ) {
+                                account.render.row.visability = true;
+                            } else {
+                                account.render.row.visability = false;
+                            }
+                        })
+
+                        app.pages.resources.tabs.accounts.footer.total.update(accounts.length, i)
+
+                        $('.table_header_row .button-check').remove();
+                        $('.table_header_row .button-remove').remove();
+                    })
+                    pagination.append( pageButton )
+
+                }
+            }
+        },
+        total: {
+            render: (total, page) => {
+                let text;
+
+                if ( total === 0 ) {
+                    text = '0 ' + lang.pages.resources.tabs.accounts.table.footer.of + ' 0';
+                } else {
+                    if ( total < state.params.pages.resources.tabs.accounts.rowsOnPage ) {
+                        text = total + ' ' + lang.pages.resources.tabs.accounts.table.footer.of + ' ' + total;
+                    } else {
+                        let first, second;
+                        if ( page === 1 ) {
+                            first = 1;
+                            second = state.params.pages.resources.tabs.accounts.rowsOnPage;
+                        } else {
+                            first = ( page - 1 ) * state.params.pages.resources.tabs.accounts.rowsOnPage + 1;
+                            second = page * state.params.pages.resources.tabs.accounts.rowsOnPage
+                        }
+                        if ( page * state.params.pages.resources.tabs.accounts.rowsOnPage > total ) {
+                            second = total
+                        }
+
+                        text = first + ' - ' + second + ' ' + lang.pages.resources.tabs.accounts.table.footer.of + ' ' + total;
+                    }
+                }
+
+                return $('<DIV/>', {
+                    class: 'total',
+                    text: text
+                });
+            },
+            update: (first, total) => {
+                let totalEl = $('.table_footer .total');
+                totalEl.after( app.pages.resources.tabs.accounts.footer.total.render(first, total) );
+                totalEl.remove();
+            },
+            reset: () => {
+                app.pages.resources.tabs.accounts.footer.total.update(1, resources.accounts.length);
+            }
+        }
     },
     addAccounts: {
         btn: {
@@ -2473,7 +1086,7 @@ app.pages.resources.tabs.accounts = {
                         });
 
                         button.on('click.add', () => {
-                            ipcRenderer.send('addAccounts_tdata_req', { api: api.val() });
+                            ipcRenderer.send('addAccounts_tdata_req', { api: api.val(), token: localStorage.getItem('token') });
                             button
                                 .addClass('loading')
                                 .off('click.add')
@@ -2509,8 +1122,15 @@ app.pages.resources.tabs.accounts = {
 
                             if ( data.added ) {
                                 content.addClass('added')
-                                const added = $('<P/>', { class: 'tab_added', html: utils.declOfNum(data.added, lang.pages.resources.tabs.accounts.addAccounts.popup.added.success ) + '&nbsp;<b>' + data.added + '</b>&nbsp;' + utils.declOfNum(data.added, lang.pages.resources.tabs.accounts.addAccounts.popup.added.accounts ) })
+                                const added = $('<P/>', { class: 'tab_added', html: utils.declOfNum(data.added.length, lang.pages.resources.tabs.accounts.addAccounts.popup.added.success ) + '&nbsp;<b>' + data.added.length + '</b>&nbsp;' + utils.declOfNum(data.added.length, lang.pages.resources.tabs.accounts.addAccounts.popup.added.accounts ) })
                                 content.append( added )
+
+                                data.added.forEach(account => {
+                                    resources.accounts.push( account )
+                                })
+
+                                app.pages.resources.tabs.accounts.body.colUpdate();
+
                             }
 
                             if ( data.error.length ) {
@@ -2545,7 +1165,6 @@ app.pages.resources.tabs.accounts = {
                             })
 
                             content.append( button )
-
                         }
                     }
                 },
@@ -2587,6 +1206,22 @@ app.pages.resources.tabs.accounts = {
                     }
                 }
             }
+        }
+    },
+    check: {
+        once: (account) => {
+
+        },
+        all: () => {
+
+        }
+    },
+    remove: {
+        once: (account) => {
+
+        },
+        all: () => {
+
         }
     }
 }

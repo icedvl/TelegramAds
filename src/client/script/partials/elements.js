@@ -72,7 +72,7 @@ const elements = {
         if ( params.url ) {
             button = $('<A/>', { class: 'button', href: params.url, target: '_blank' });
         } else {
-            button = $('<DIV/>', { class: 'button' });
+            button = $('<BUTTON/>', { class: 'button' });
         }
 
         if ( params.class ) {
@@ -93,6 +93,10 @@ const elements = {
 
         if ( params.text ) {
             button.append($('<SPAN/>', { text: params.text }));
+        }
+
+        if ( params.title ) {
+            button.attr('title', params.title)
         }
 
         if ( params.icon ) {

@@ -36,6 +36,14 @@ const utils = {
 
         }
     },
+    getResources: {
+        accounts: () => {
+            return $.get(process.env.SERVER + '/accounts/get')
+        },
+        proxies: () => {
+            return $.get(process.env.SERVER + '/accounts/proxies')
+        }
+    },
     page: {
         clearAll: () => {
             $('body *').remove();
@@ -91,5 +99,5 @@ const utils = {
         } else {
             return titles;
         }
-    }
+    },
 };

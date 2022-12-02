@@ -99,6 +99,7 @@ languages.en = {
                     status: {
                       title: 'Status',
                       options: {
+                        new: 'New',
                         active: 'Active',
                         floodWait: 'Flood Wait',
                         floodBan: 'Flood Ban',
@@ -135,6 +136,7 @@ languages.en = {
             },
             rows: {
               statuses: {
+                new: 'New',
                 active: 'Active',
                 floodWait: 'Flood Wait',
                 floodBan: 'Flood Ban',
