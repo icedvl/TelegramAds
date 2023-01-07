@@ -84,9 +84,13 @@
 				display: none!important;
 			}
 
-			&:nth-child(odd) .table_cell {
-				background: #F9F9FF;
-			}
+			//&:visible {
+			//	&:nth-child(odd) {
+			//		.table_cell {
+			//			background: #F9F9FF;
+			//		}
+			//	}
+			//}
 
 			&:hover {
 				.table_cell {
@@ -94,34 +98,32 @@
 				}
 			}
 
-
 			&.status-new .cell-status {
-				background: #dbdeff;
+				background: #dbdeff!important;
 				color: @primary;
 				padding: 0;
 			}
 
 			&.status-active .cell-status {
-				background: #EBFFEC;
+				background: #EBFFEC!important;
 				color: #227926;
 				padding: 0;
 			}
 
-
 			&.status-floodWait .cell-status {
-				background: #FFF9DC;
+				background: #FFF9DC!important;
 				color: #D78F04;
 				padding: 0;
 			}
 
 			&.status-floodBan .cell-status {
-				background: #FFE9CF;
+				background: #FFE9CF!important;
 				color: #EE3900;
 				padding: 0;
 			}
 
 			&.status-ban .cell-status {
-				background: #FFEAEA;
+				background: #FFEAEA!important;
 				color: #B84B4B;
 				padding: 0;
 			}
@@ -129,7 +131,7 @@
 			&.selected {
 
 				.table_cell:not(.cell-status) {
-					background: #EAECFF;
+					background: #EAECFF!important;
 				}
 			}
 		}
@@ -198,10 +200,16 @@
 				&:hover {
 					color: #307AE9;
 
-					svg {
+					.icon_reload {
 						path {
 							stroke: #307AE9;
 						}
+					}
+				}
+
+				.icon_remove {
+					path {
+						stroke: @red;
 					}
 				}
 			}

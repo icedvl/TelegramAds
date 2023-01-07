@@ -19077,7 +19077,14 @@ languages.en = {
       minutes: 'm',
       seconds: 's'
     },
-    close: 'Close'
+    close: 'Close',
+    popup: {
+      error: {
+        title: 'Error',
+        name: 'Unknown error',
+        description: 'Restart the application, and try again'
+      }
+    }
   },
   lang: {
     code: 'EN',
@@ -19093,6 +19100,28 @@ languages.en = {
     serverNotRespond: {
       message: 'The server is not responding',
       button: 'Retry'
+    }
+  },
+  coming: {
+    cta: 'Vote',
+    title: 'Vote',
+    description: 'By voting for future functionality, you help us determine development priorities.',
+    stars: {
+      1: 'I don\'t need',
+      2: 'Well, let it be',
+      3: 'I would try',
+      4: 'Very lacking',
+      5: 'Critically important'
+    },
+    accountEdit: {
+      cover: 'Editing account details - Coming soon!',
+      title: 'Editing account details',
+      description: 'Allows you to change the data of the added account: Avatar, Username, First Name, Last Name, Description'
+    },
+    accountChats: {
+      cover: 'Chats -  Coming Soon!',
+      title: 'Chats',
+      description: 'Allows the account to join groups and channels, as well as to correspond with users'
     }
   },
   pages: {
@@ -19137,6 +19166,7 @@ languages.en = {
             header: {
               search: 'Find an account',
               buttons: {
+                addAccounts: 'Add Accounts',
                 createGroup: 'Create new group'
               },
               actions: {
@@ -19277,6 +19307,45 @@ languages.en = {
                 nothing: 'Accounts not found'
               }
             }
+          },
+          removeAccounts: {
+            popup: {
+              title: 'Delete',
+              accounts: ['account', 'accounts', 'accounts'],
+              buttons: {
+                confirm: 'Delete',
+                cancel: 'Cancel'
+              }
+            }
+          },
+          edit: {
+            title: 'Edit',
+            account: 'Account - ',
+            inAppName: 'Account name in app',
+            limits: {
+              messages: {
+                label: 'Limit of messages per day',
+                input: 'Unlimited'
+              },
+              invites: {
+                label: 'Limit of invites per day',
+                input: 'Unlimited'
+              }
+            },
+            button: {
+              save: 'Save'
+            },
+            telegram: {
+              title: 'Telegram account details',
+              firstname: 'First Name',
+              lastname: 'Last Name',
+              username: '@username',
+              about: 'About',
+            },
+            chats: {
+              title: 'Chats',
+              search: 'Search'
+            }
           }
         },
         proxies: {
@@ -19348,7 +19417,14 @@ languages.ru = {
       minutes: 'м',
       seconds: 'с'
     },
-    close: 'Закрыть'
+    close: 'Закрыть',
+    popup: {
+      error: {
+        title: 'Ошибка',
+        name: 'Неизвестная ошибка',
+        description: 'Перезапустите приложение, и повторите операцию'
+      }
+    }
   },
   lang: {
     code: 'RU',
@@ -19364,6 +19440,28 @@ languages.ru = {
     serverNotRespond: {
       message: 'Сервер не отвечает',
       button: 'Повторить'
+    }
+  },
+  coming: {
+    cta: 'Проголосовать',
+    title: 'Проголосовать',
+    description: 'Голосуя за будущий функционал, вы помогаете нам определить приоритеты разработки',
+    stars: {
+      1: 'Мне не требуется',
+      2: 'Пусть будет',
+      3: 'Я бы попробовал',
+      4: 'Очень не хватает',
+      5: 'Критически важно'
+    },
+    accountEdit: {
+      cover: 'Редактирование аккаунта - Скоро!',
+      title: 'Редактирование аккаунта',
+      description: 'Позволяет изменить данные добавленного аккаунта: Аватар, Username, Имя, Фамилию, Описание'
+    },
+    accountChats: {
+      cover: 'Чаты -  Скоро!',
+      title: 'Чаты',
+      description: 'Позволяет аккаунту вступать в группы и каналы, а так же вести переписку с пользователями'
     }
   },
   pages: {
@@ -19548,6 +19646,45 @@ languages.ru = {
                 addMore: 'Добавить еще аккаунтов',
                 nothing: 'Аккаунты не найдены'
               }
+            }
+          },
+          removeAccounts: {
+            popup: {
+              title: 'Удалить',
+              accounts: ['аккаунт', 'аккаунта', 'аккаунтов'],
+              buttons: {
+                confirm: 'Удалить',
+                cancel: 'Отмена'
+              }
+            }
+          },
+          edit: {
+            title: 'Редактировать',
+            account: 'Аккаунт - ',
+            inAppName: 'Имя аккаунта в приложении',
+            limits: {
+              messages: {
+                label: 'Лимит сообщений в день',
+                input: 'Лимита нет'
+              },
+              invites: {
+                label: 'Лимит приглашений в день',
+                input: 'Лимита нет'
+              }
+            },
+            button: {
+              save: 'Сохранить'
+            },
+            telegram: {
+              title: 'Данные аккаунта в Telegram',
+              firstname: 'Имя',
+              lastname: 'Фамилия',
+              username: '@username',
+              about: 'Описание',
+            },
+            chats: {
+              title: 'Чаты',
+              search: 'Поиск'
             }
           }
         },
@@ -19895,6 +20032,8 @@ const app = {
 
     // подгружаем язык
 
+    // const { ipcRenderer } = require('electron');
+    
     const utils = {
         system: {
             connectionStatus: () => {
@@ -19934,11 +20073,14 @@ const app = {
             }
         },
         getResources: {
+            votes: () => {
+                return $.get(process.env.SERVER + '/vote/get');
+            },
             accounts: () => {
-                return $.get(process.env.SERVER + '/accounts/get')
+                return $.get(process.env.SERVER + '/accounts/get');
             },
             proxies: () => {
-                return $.get(process.env.SERVER + '/accounts/proxies')
+                return $.get(process.env.SERVER + '/accounts/proxies');
             }
         },
         page: {
@@ -20036,74 +20178,324 @@ const app = {
         drag: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path stroke="#A1A3B3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.5 5.417h15m-15 5h15m-15 5h15"/></svg>',
         arrows: {
             tableSelect: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" fill="none"><path fill="#A7A7A7" d="M8.227 0H1.414C.524 0 .077 1.077.707 1.707l3.554 3.554a1 1 0 0 0 1.445-.03l3.258-3.555C9.552 1.034 9.097 0 8.227 0Z"/></svg>',
-        }
+        },
+        vote: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path fill="#fff" d="M6.39 16.225V6.065c0-.4.12-.79.34-1.12L9.46.885c.43-.65 1.5-1.11 2.41-.77.98.33 1.63 1.43 1.42 2.41l-.52 3.27c-.04.3.04.57.21.78.17.19.42.31.69.31h4.11c.79 0 1.47.32 1.87.88.38.54.45 1.24.2 1.95l-2.46 7.49c-.31 1.24-1.66 2.25-3 2.25h-3.9c-.67 0-1.61-.23-2.04-.66l-1.28-.99c-.49-.37-.78-.96-.78-1.58ZM3.21 4.115H2.18c-1.55 0-2.18.6-2.18 2.08v10.06c0 1.48.63 2.08 2.18 2.08h1.03c1.55 0 2.18-.6 2.18-2.08V6.194c0-1.48-.63-2.08-2.18-2.08Z"/></svg>',
+        star: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" fill="none"><path fill="#7761FF" stroke="#7761FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.73 3.01 1.76 3.52c.24.49.88.96 1.42 1.05l3.19.53c2.04.34 2.52 1.82 1.05 3.28l-2.48 2.48c-.42.42-.65 1.23-.52 1.81l.71 3.07c.56 2.43-.73 3.37-2.88 2.1l-2.99-1.77c-.54-.32-1.43-.32-1.98 0l-2.99 1.77c-2.14 1.27-3.44.32-2.88-2.1l.71-3.07c.13-.58-.1-1.39-.52-1.81l-2.48-2.48C.39 9.93.86 8.45 2.9 8.11l3.19-.53c.53-.09 1.17-.56 1.41-1.05l1.76-3.52c.96-1.91 2.52-1.91 3.47 0Z"/></svg>'
     }
     
     const elements = {
+        interval: null,
         popup: {
             create: (type, content, target) => {
                 target = target || $('body');
     
                 $('.curtain').css('zIndex', 3).fadeIn(200);
-                target.append(
-                    $('<DIV/>', { class: 'magictime popup_wrap ' + type }).append(
-                        $('<DIV/>', { class: 'popup' }).append(
-                            $('<DIV/>', { class: 'popup_header' }).append(
-                                $('<DIV/>', { class: 'popup_title', text: content.title }),
-                                $('<DIV/>', { class: 'popup_close', title: lang.helpers.close })
-                                    .append( svg.icon.cross )
-                                    .on('click', function() {
-                                        elements.popup.destroy(content.callback)
+    
+                let wrap = $('<DIV/>', { class: 'magictime popup_wrap ' + type });
+    
+                let popup = $('<DIV/>', { class: 'popup' }).append(
+                    $('<DIV/>', { class: 'popup_header' }).append(
+                        $('<DIV/>', { class: 'popup_title', text: content.title }),
+                        $('<DIV/>', { class: 'popup_close', title: lang.helpers.close })
+                            .append( svg.icon.cross )
+                            .on('click.destroy', function() {
+                                if ( !content.secondPopup ) {
+                                    elements.popup.destroy(content.callback)
+                                } else {
+                                    clearInterval(elements.interval)
+                                    $('.popup_wrap.second').remove();
+                                    $('.popup_wrap.hide .popup').fadeIn(200)
+                                    $('.popup_wrap.hide').removeClass('hide');
+    
+                                    $(document).on('keydown.popupClose', function (e) {
+                                        if (e.key === 'Escape' || e.keyCode === 27) {
+                                            e.preventDefault();
+                                            setTimeout(() => {
+                                                elements.popup.destroy(content.callback)
+                                            }, 200)
+                                        }
                                     })
-                            ),
-                            $('<DIV/>', { class: 'popup_content' }).append( content.body ),
-                            content.actions ? $('<DIV/>', { class: 'popup_actions' }).append( content.actions ) : ''
-                        )
-                    )
-                )
+                                }
+                            })
+                    ),
+                    $('<DIV/>', { class: 'popup_content' }).append( content.body ),
+                    content.actions ? $('<DIV/>', { class: 'popup_actions' }).append( content.actions ) : ''
+                );
+    
+                wrap.append( popup );
+    
     
                 if ( type === 'side' ) {
-                    target.find('.popup_wrap').addClass('slideRightReturn')
+                    wrap.addClass('slideRightReturn')
                 }
     
                 if ( type === 'center' ) {
-                    target.find('.popup_wrap').addClass('vanishIn')
+                    wrap.addClass('vanishIn')
                 }
     
-                $(document).on('keydown.popupClose',  function (e) {
-                    if ( e.key === 'Escape' || e.keyCode === 27 ) {
-                        e.preventDefault();
-                        elements.popup.destroy(content.callback)
-                    }
-                })
+                if ( type === 'group' ) {
+                    wrap.addClass('vanishIn')
+                    wrap.append( content.second )
+                }
     
-                $(document).on('keydown.popupSave',  function (e) {
+                if ( type === 'vote' ) {
+                    wrap.addClass('vanishIn')
+                }
     
-                    if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
-                        e.preventDefault();
-                        if ( content.saveFn ) {
-                            content.saveFn();
+    
+                if ( !content.secondPopup ) {
+                    $(document).on('keydown.popupClose', function (e) {
+                        if (e.key === 'Escape' || e.keyCode === 27) {
+                            e.preventDefault();
+                            elements.popup.destroy(content.callback)
                         }
-                        elements.popup.destroy(content.callback)
-                    }
-                })
+                    })
+                } else {
+                    wrap.addClass('second');
+                    $('.popup_wrap').addClass('hide');
+                    $('.popup_wrap .popup').hide(0);
+                    $(document).off('keydown.popupClose');
+    
+                    $(document).on('keydown.secondPopupClose', function (e) {
+                        if (e.key === 'Escape' || e.keyCode === 27) {
+                            e.preventDefault();
+    
+                            clearInterval(elements.interval)
+                            $('.popup_wrap.second').remove();
+                            $('.popup_wrap.hide .popup').fadeIn(200)
+                            $('.popup_wrap.hide').removeClass('hide');
+    
+                            $(document).on('keydown.popupClose', function (e) {
+                                if (e.key === 'Escape' || e.keyCode === 27) {
+                                    e.preventDefault();
+                                    setTimeout(() => {
+                                        elements.popup.destroy(content.callback)
+                                    }, 200)
+                                }
+                            })
+                        }
+                    })
+                }
+    
+                if ( content.saveFn ) {
+                    $(document).on('keydown.popupSave', function (e) {
+    
+                        if ( (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83 ) {
+                            e.preventDefault();
+                            content.saveFn();
+                            if ( !content.dontDestroy ) {
+                                elements.popup.destroy(content.callback);
+                            }
+                        }
+                    })
+                }
+    
+                // Добаляем на страницу
+                target.append( wrap )
     
             },
-            destroy: (callback) => {
+            destroy: (callback, wrap) => {
                 $(document).off('keydown.popupSave');
                 $(document).off('keydown.popupClose');
-                if ( $('.popup_wrap').hasClass('slideRightReturn') ) {
-                    $('.popup_wrap').removeClass('slideRightReturn').addClass('slideRight')
+    
+                let popup = wrap || $('.popup_wrap')
+    
+                if ( popup.hasClass('slideRightReturn') ) {
+                    popup.removeClass('slideRightReturn').addClass('slideRight')
                 }
-                if ( $('.popup_wrap').hasClass('vanishIn') ) {
-                    $('.popup_wrap').removeClass('vanishIn').addClass('vanishOut')
+                if ( popup.hasClass('vanishIn') ) {
+                    popup.removeClass('vanishIn').addClass('vanishOut')
                 }
+    
                 $('.curtain').fadeOut(200);
+    
                 if ( callback ) { callback() }
+    
                 setTimeout(() => {
                     $('.curtain').css('zIndex', -1)
                     $('.popup_wrap').remove();
                 }, 200)
+            },
+            error: (title, text) => {
+    
+                if ( $('.popup_wrap').length ) {
+                    $('.popup').remove();
+    
+    
+                    $('.popup_wrap').append(
+                        $('<DIV/>', { class: 'popup' }).append(
+                            $('<DIV/>', { class: 'popup_header' }).append(
+                                $('<DIV/>', { class: 'popup_title', text: lang.helpers.popup.error.title }),
+                                $('<DIV/>', { class: 'popup_close', title: lang.helpers.close })
+                                    .append( svg.icon.cross )
+                                    .on('click.destroy', () => {
+                                        elements.popup.destroy()
+                                    })
+                            ),
+                            $('<DIV/>', { class: 'popup_content' }).append(
+                                $('<DIV/>', { class: 'error' }).append(
+                                    $('<SPAN/>', { class: 'error_title', text: title || lang.helpers.popup.error.name }),
+                                    $('<SPAN/>', { class: 'error_text', text: text || lang.helpers.popup.error.description })
+                                )
+                            ),
+                            $('<DIV/>', { class: 'popup_actions' }).append(
+                                elements.button({
+                                    class: 'button-error',
+                                    text: lang.helpers.close,
+                                    primary: true
+                                })
+                                    .on('click.destroy', () => {
+                                        elements.popup.destroy()
+                                    })
+                            )
+                        )
+                    )
+                } else {
+    
+                    elements.popup.create('center', {
+                        title: lang.helpers.popup.error.title,
+                        body: $('<DIV/>', { class: 'error' }).append(
+                            $('<SPAN/>', { class: 'error_title', text: title || lang.helpers.popup.error.name }),
+                            $('<SPAN/>', { class: 'error_text', text: text || lang.helpers.popup.error.description })
+                        ),
+                        actions: elements.button({
+                            class: 'button-error',
+                            text: lang.helpers.close
+                        })
+                            .on('click.destroy', () => {
+                                elements.popup.destroy()
+                            })
+                    })
+                }
+            },
+            vote: (feature, cls) => {
+    
+                let data = {
+                    feature: feature,
+                    rate: null
+                }
+    
+                let rate = (el, rate, note) => {
+    
+                    $('.stars_star').off('click.rate');
+                    data.rate = rate;
+                    el.closest('.vote_content_stars').addClass('voted');
+                    el.addClass('active');
+    
+                    $.post(process.env.SERVER + '/vote', data )
+                        .done(res => {
+                            if ( !resources.vote ) {
+                                resources.vote = {};
+                            }
+                            resources.vote[feature] = rate;
+                            cover.addClass('voted')
+                            cover.find('.coming_vote').remove();
+                            cover.off('click.vote')
+    
+                            let count = 5;
+                            elements.interval = setInterval(() => {
+                                if ( count === 0 ) {
+                                    clearInterval(elements.interval)
+                                    $('.popup_wrap.second').remove();
+                                    $('.popup_wrap.hide .popup').fadeIn(200)
+                                    $('.popup_wrap.hide').removeClass('hide');
+    
+                                    $(document).on('keydown.popupClose', function (e) {
+                                        if (e.key === 'Escape' || e.keyCode === 27) {
+                                            e.preventDefault();
+                                            setTimeout(() => {
+                                                elements.popup.destroy(content.callback)
+                                            }, 200)
+                                        }
+                                    })
+                                } else {
+                                    note.find('.vote_content_tnx span').text(count + ' ' + utils.declOfNum(count, ['секунду', 'секунды', 'секунд']))
+                                    count--;
+                                }
+                            }, 1000)
+    
+                            note.html(
+                                $('<DIV/>', { class: 'vote_content_tnx', text: 'Ваш голос принят, можете закрыть попап, или он закроется через ' }).append(
+                                    $('<SPAN/>', { text: count + ' ' + utils.declOfNum(count, ['секунду', 'секунды', 'секунд'])})
+                                )
+                            )
+                            count--;
+                        })
+                        .fail(err => {
+                            elements.popup.error()
+                        })
+                }
+    
+                let votePopup = (feature, cover) => {
+    
+                    let content = $('<DIV/>', { class: 'vote_content' });
+                    let title = $('<DIV/>', { class: 'vote_content_title', text: lang.coming[feature].title });
+                    let description = $('<DIV/>', { class: 'vote_content_description', text: lang.coming[feature].description });
+                    let note = $('<DIV/>', { class: 'vote_content_note', text: lang.coming.description });
+                    let starsWrap = $('<DIV/>', { class: 'vote_content_stars-wrap' });
+                    let stars = $('<DIV/>', { class: 'vote_content_stars' });
+                    stars.append(
+                        $('<DIV/>', { class: 'stars_star'}).append(
+                            svg.star,
+                            $('<DIV/>', { class: 'stars_star_text', text: lang.coming.stars[1] }),
+                        ).on('click.rate', function() { rate($(this), 1, note, cover) }),
+                        $('<DIV/>', { class: 'stars_star'}).append(
+                            svg.star,
+                            $('<DIV/>', { class: 'stars_star_text', text: lang.coming.stars[2] }),
+                        ).on('click.rate', function() { rate($(this), 2, note, cover) }),
+                        $('<DIV/>', { class: 'stars_star'}).append(
+                            svg.star,
+                            $('<DIV/>', { class: 'stars_star_text', text: lang.coming.stars[3] }),
+                        ).on('click.rate', function() { rate($(this), 3, note, cover) }),
+                        $('<DIV/>', { class: 'stars_star'}).append(
+                            svg.star,
+                            $('<DIV/>', { class: 'stars_star_text', text: lang.coming.stars[4] }),
+                        ).on('click.rate', function() { rate($(this), 4, note, cover) }),
+                        $('<DIV/>', { class: 'stars_star'}).append(
+                            svg.star,
+                            $('<DIV/>', { class: 'stars_star_text', text: lang.coming.stars[5] }),
+                        ).on('click.rate', function() { rate($(this), 5, note, cover) }),
+                    )
+    
+    
+                    content.append(
+                        title,
+                        description,
+                        starsWrap.append( stars ),
+                        note
+                    )
+    
+                    if ( $('.popup_wrap').length ) {
+                        elements.popup.create('vote', {
+                            title: lang.coming.title,
+                            body: content,
+                            secondPopup: true
+                        })
+                    } else {
+                        elements.popup.create('center', {
+                            title: lang.coming.title,
+                            body: content
+                        })
+                    }
+                }
+    
+    
+    
+                let cover = $('<DIV/>', { class: 'coming ' + cls }).append(
+                    $('<DIV/>', { class: 'coming_cover', text: lang.coming[feature].cover }),
+                    $('<DIV/>', { class: 'coming_vote', text: lang.coming.cta }).append(svg.vote)
+                )
+    
+                if ( !resources.vote || !resources.vote[feature] ) {
+                    cover.on('click.vote', () => {
+                        votePopup(feature, cover)
+                    })
+                } else {
+                    cover.addClass('voted')
+                    cover.find('.coming_vote').remove();
+                }
+    
+                return cover;
             }
         },
         button: (params) => {
@@ -20141,17 +20533,20 @@ const app = {
             }
     
             if ( params.icon ) {
-                button.append( params.icon );
+                button.prepend( params.icon );
             }
     
             if ( params.primary ) {
                 button.addClass('button--primary');
             }
     
+            if ( params.danger ) {
+                button.addClass('button--danger');
+            }
+    
             if ( params.loader ) {
                 button.append( svg.loader );
             }
-    
     
             return button;
         }
@@ -20172,6 +20567,8 @@ const app = {
     //     console.log('Update Downloaded')
     // });
     
+    // import {ipcRenderer} from "electron";
+    
     app.auth = {
         render: () => {
     
@@ -20190,9 +20587,11 @@ const app = {
         },
         check: async () => {
              if ( localStorage.getItem('token') ) {
+    
+                 ipcRenderer.send('token', { token: localStorage.getItem('token') });
+    
                  $.ajaxSetup({
                      headers: {
-                         'Content-Type': 'application/json',
                          'Accept': 'application/json',
                          'Authorization': 'Bearer ' + localStorage.getItem('token')
                      }
@@ -20668,6 +21067,7 @@ const app = {
     }
     
     app.pages.resources.tabs.accounts = {
+        searching: false,
         render: () => {
     
             const table = $('<DIV/>', { class: 'table resource_table' });
@@ -20719,7 +21119,7 @@ const app = {
                     btnCreateGroup,
                     groups.append( app.pages.resources.tabs.accounts.header.groups.render(['Группа 1','Группа 2', 'Группа 3', 'Группа 4']) ),
                     btnAddToGroup,
-                    app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                    app.pages.resources.tabs.accounts.header.remove.btn.render(),
                     app.pages.resources.tabs.accounts.header.checkAll.btn.render()
                 )
     
@@ -20985,18 +21385,17 @@ const app = {
                         resources.accounts.forEach(( account, i ) => {
                             account.render.row.filtered = false;
                         })
-    
-    
                     }
-    
     
                     $('.table_header_row .button-check').remove();
                     $('.table_header_row .button-remove').remove();
     
                     state.params.pages.resources.tabs.accounts.filters = params;
                     localStorage.setItem('params', JSON.stringify(state.params));
-                    elements.popup.destroy();
     
+                    if ( $('.popup_wrap').hasClass('side') ) {
+                        elements.popup.destroy();
+                    }
     
                     app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
     
@@ -21010,9 +21409,10 @@ const app = {
                     app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
     
                     resources.accounts.forEach( account => {
-                        account.render.row.filtered = false;
+                        if ( account.render ) {
+                            account.render.row.filtered = false;
+                        }
                     })
-    
     
                     $('.table_header_row .button-check').remove();
                     $('.table_header_row .button-remove').remove();
@@ -21020,7 +21420,6 @@ const app = {
                     state.params.pages.resources.tabs.accounts.filters = params;
                     localStorage.setItem('params', JSON.stringify( state.params ));
                     elements.popup.destroy();
-    
     
                     app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
     
@@ -21054,16 +21453,23 @@ const app = {
                 search: (input) => {
                     let request = input.val();
                     if ( request ) {
-                        $('.table_content .table_row').addClass('hide')
-                        $('.table_content .table_row').each((i, item) => {
-                            if ( $(item).find('.cell-name').text().toLowerCase().indexOf(request) !== -1
-                                || $(item).find('.cell-id').text().toLowerCase().indexOf(request) !== -1 ) {
-                                $(item).removeClass('hide');
+                        app.pages.resources.tabs.accounts.searching = true;
+                        resources.accounts.forEach(account => {
+                            account.render.row.search = false;
+                            if ( account.config.name.indexOf(request) !== -1
+                            || account._id.indexOf(request) !== -1 ) {
+                                account.render.row.search = true;
                             }
                         })
                     } else {
-                        $('.table_content .table_row').removeClass('hide');
+                        app.pages.resources.tabs.accounts.searching = false;
+                        resources.accounts.forEach(account => {
+                            account.render.row.search = false;
+                        })
                     }
+                    // app.pages.resources.tabs.accounts.body.colUpdate();
+                    app.pages.resources.tabs.accounts.body.colCalcWidth();
+                    app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
                 }
             },
             checkAll: {
@@ -21073,11 +21479,13 @@ const app = {
                             class: 'button-check',
                             icon: svg.icon.check,
                             title: lang.pages.resources.tabs.accounts.table.header.actions.check
+                        }).on('click', () => {
+                            app.pages.resources.tabs.accounts.check();
                         })
                     }
                 }
             },
-            removeAll: {
+            remove: {
                 btn: {
                     render: () => {
                         return elements.button({
@@ -21085,13 +21493,16 @@ const app = {
                             icon: svg.icon.remove,
                             title: lang.pages.resources.tabs.accounts.table.header.actions.remove
                         })
+                            .on('click', () => {
+                                app.pages.resources.tabs.accounts.remove.popup()
+                            })
+    
                     }
                 }
             }
         },
         body: {
             render: () => {
-    
                 const tableBody = $('<DIV/>', { class: 'table_body' });
                 const tableContent = $('<DIV/>', { class: 'table_content' });
     
@@ -21116,6 +21527,7 @@ const app = {
                                     filtered: false,
                                     show: true,
                                     selected: false,
+                                    search: false,
                                     el: null,
                                     set visability(value) {
                                         if (value) {
@@ -21216,7 +21628,7 @@ const app = {
                                             })
                                             if (!$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
                                                 $('.table_header_row:first-child').append(
-                                                    app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                    app.pages.resources.tabs.accounts.header.remove.btn.render(),
                                                     app.pages.resources.tabs.accounts.header.checkAll.btn.render()
                                                 )
                                             }
@@ -21335,7 +21747,7 @@ const app = {
     
                                             if ( !$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
                                                 $('.table_header_row:first-child').append(
-                                                    app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                    app.pages.resources.tabs.accounts.header.remove.btn.render(),
                                                     app.pages.resources.tabs.accounts.header.checkAll.btn.render()
                                                 )
                                             }
@@ -21370,11 +21782,10 @@ const app = {
                     },
                     name: {
                         render: (item, account) => {
-                            return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.config.name }).on('click', app.pages.resources.tabs.accounts.body.rows.columns.name.change)
-                        },
-                        change: () => {
-                            console.log('Заглушка: Попап с инпутом для смены имени')
-                        },
+                            return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.config.name }).on('click', () => {
+                                app.pages.resources.tabs.accounts.edit.popup(account)
+                            })
+                        }
                     },
                     floodTime: {
                         render: (item, account) => {
@@ -21465,13 +21876,20 @@ const app = {
                     },
                     check: {
                         render: (item, account) => {
-                            return $('<DIV/>', { class: 'table_cell cell-check', 'data-order': item.order})
-                                .append( svg.icon.check )
-                                .on('click', () => { app.pages.resources.tabs.accounts.body.rows.columns.check.check( account.id ) })
-                        },
-                        check: (account) => {
-                            console.log('Заглушка: проверка аккаунта', account.id);
-                        },
+                            if ( account.status === 'BAN' ) {
+                                return $('<DIV/>', {class: 'table_cell cell-check', 'data-order': item.order})
+                                    .append(svg.icon.remove)
+                                    .on('click', () => {
+                                        app.pages.resources.tabs.accounts.remove.popup(account._id)
+                                    })
+                            } else {
+                                return $('<DIV/>', {class: 'table_cell cell-check', 'data-order': item.order})
+                                    .append(svg.icon.check)
+                                    .on('click', () => {
+                                        app.pages.resources.tabs.accounts.check(account._id)
+                                    })
+                            }
+                        }
                     }
                 }
             },
@@ -21566,7 +21984,7 @@ const app = {
                     )
                 },
                 change: (sum, resultEl) => {
-                    // меняем кофиг
+                    // меняем конфиг
                     state.params.pages.resources.tabs.accounts.rowsOnPage = sum;
                     localStorage.setItem('params', JSON.stringify( state.params ))
                     resultEl.text( state.params.pages.resources.tabs.accounts.rowsOnPage )
@@ -21598,6 +22016,19 @@ const app = {
                         accounts = resources.accounts;
                     }
     
+                    if ( app.pages.resources.tabs.accounts.searching ) {
+                        console.log('111')
+                        let tempArray = [];
+                        accounts.forEach(account => {
+                            account.render.row.visability = false;
+                            if ( account.render.row.search ) {
+                                tempArray.push( account )
+                            }
+                        })
+                        accounts = tempArray;
+                        console.log( tempArray.length )
+                    }
+    
     
     
                     const rowsOnPage = state.params.pages.resources.tabs.accounts.rowsOnPage;
@@ -21615,6 +22046,9 @@ const app = {
                     })
     
                     app.pages.resources.tabs.accounts.footer.total.update(accounts.length, 1)
+    
+                    $('.table_row .table_cell').css({'background': 'transparent'});
+                    $('.table_row:visible:odd .table_cell').css({'background': '#F9F9FF'});
     
     
                     for (let i = 1; i < pageCount + 1; i++) {
@@ -21641,10 +22075,15 @@ const app = {
     
                             $('.table_header_row .button-check').remove();
                             $('.table_header_row .button-remove').remove();
+    
+                            $('.table_row .table_cell').css({'background': 'transparent'});
+                            $('.table_row:visible:odd .table_cell').css({'background': '#F9F9FF'});
+    
+                            app.pages.resources.tabs.accounts.body.colCalcWidth();
                         })
                         pagination.append( pageButton )
-    
                     }
+    
                 }
             },
             total: {
@@ -21691,12 +22130,15 @@ const app = {
         addAccounts: {
             btn: {
                 render: () => {
-                    return btnAddAccounts = $('<DIV/>', { class: 'button button--primary button-add-accounts' })
-                        .append(
-                            svg.icon.plus,
-                            $('<SPAN/>', { text: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts })
-                        )
-                        .on('click', app.pages.resources.tabs.accounts.addAccounts.popup.render)
+    
+                    return elements.button({
+                        class: 'button-add-accounts',
+                        primary: true,
+                        icon: svg.icon.plus,
+                        text: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts,
+                        title: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts
+                    })
+                        .on('click', app.pages.resources.tabs.accounts.addAccounts.popup.render )
                 }
             },
             popup: {
@@ -21779,6 +22221,9 @@ const app = {
                                             .off('click.add')
                                     });
                             } else {
+    
+                                console.log(data)
+    
                                 let content = $('.accounts_tab-content.tab-tdata');
     
                                 content.find('*').remove();
@@ -21798,7 +22243,47 @@ const app = {
                                         resources.accounts.push( account )
                                     })
     
-                                    app.pages.resources.tabs.accounts.body.colUpdate();
+                                    // app.pages.resources.tabs.accounts.body.colUpdate();
+    
+    
+    
+    
+    
+    
+    
+                                    // убираем из стейта филттрацию (вдруг была)
+                                    state.params.pages.resources.tabs.accounts.filters.isFiltered = false;
+                                    for (const key in state.params.pages.resources.tabs.accounts.filters.status ) {
+                                        state.params.pages.resources.tabs.accounts.filters.status[ key ].selected = false;
+                                    }
+                                    // убираем состояние кнопки филтрации (вдруг была)
+                                    app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
+                                    // сохраняем отклчение филтрации
+                                    localStorage.setItem('params', JSON.stringify( state.params ));
+                                    // убираем кнопки селекта (вдруг было что-то выбрано)
+                                    $('.table_header_row .button-check').remove();
+                                    $('.table_header_row .button-remove').remove();
+                                    // очищаем поиск
+                                    app.pages.resources.tabs.accounts.searching = false;
+                                    $('.table_search input').val('');
+    
+                                    // удаляем все отрендереные строки у обектов
+                                    resources.accounts.forEach( account => {
+                                        delete account.render;
+                                    })
+    
+                                    // удаляем отрендереные строки с экрана
+                                    $('.table_body').remove();
+                                    // ренденрим строки заново
+                                    $('.table_header').after(
+                                        app.pages.resources.tabs.accounts.body.render()
+                                    )
+    
+                                    app.pages.resources.tabs.accounts.body.colCalcWidth();
+    
+                                    // обновляем пагинацию
+                                    app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
+    
     
                                 }
     
@@ -21835,6 +22320,8 @@ const app = {
     
                                 content.append( button )
                             }
+    
+    
                         }
                     },
                     session: {
@@ -21877,19 +22364,261 @@ const app = {
                 }
             }
         },
-        check: {
-            once: (account) => {
+        check: (id) => {
+            let checkingAccounts = [];
+            resources.accounts.forEach(account => {
+                if ( !id ) {
+                    if (account.render.row.selected) {
+                        checkingAccounts.push({
+                            id: account._id,
+                            element: account.render.row.el
+                        });
+                    }
+                } else {
+                    if ( id === account._id ) {
+                        checkingAccounts.push({
+                            id: account._id,
+                            element: account.render.row.el
+                        });
+                    }
+                }
+            })
     
-            },
-            all: () => {
-    
-            }
+            console.log( 'Checking', checkingAccounts )
         },
         remove: {
-            once: (account) => {
+            popup: (id) => {
+    
+                let removingAccounts = [];
+                let content = $('<DIV/>', {class: 'remove-accounts'})
+    
+                if ( !id ) {
+                    resources.accounts.forEach(account => {
+                        if (account.render.row.selected) {
+                            removingAccounts.push({
+                                id: account._id,
+                                name: account.config.name
+                            });
+                            content.append(
+                                $('<DIV/>', {class: 'remove-accounts_item'}).append(
+                                    $('<SPAN/>', {text: account._id}),
+                                    $('<SPAN/>', {text: account.config.name})
+                                )
+                            )
+                        }
+                    })
+                } else {
+                    resources.accounts.forEach(account => {
+                        if ( account._id === id ) {
+                            removingAccounts.push({
+                                id: account._id,
+                                name: account.config.name
+                            });
+                            content.append(
+                                $('<DIV/>', {class: 'remove-accounts_item'}).append(
+                                    $('<SPAN/>', {text: account._id}),
+                                    $('<SPAN/>', {text: account.config.name})
+                                )
+                            )
+                        }
+                    })
+                }
+    
+                if (removingAccounts.length > 1) {
+                    content.addClass('list')
+                    content.prepend(
+                        $('<DIV/>', {
+                            class: 'list_title',
+                            text: removingAccounts.length + ' ' + utils.declOfNum(removingAccounts.length, lang.pages.resources.tabs.accounts.removeAccounts.popup.accounts)
+                        })
+                    )
+                }
+    
+                let buttons = $('<DIV/>', {class: 'remove-accounts_buttons'});
+                let buttonRemove = elements.button({
+                    text: lang.pages.resources.tabs.accounts.removeAccounts.popup.buttons.confirm,
+                    danger: true,
+                    loader: true
+                })
+                    .on('click.remove', () => {
+                        let removingAccountsIDs = [];
+                        removingAccounts.forEach(account => {
+                            removingAccountsIDs.push(account.id)
+                        })
+    
+                        // Добавляем лоадер, и отключаем все возможности закрыть попап, пока ждем ответ от сервер
+                        buttonRemove.addClass('loading').off('click.remove')
+                        buttonClose.off('click.close')
+                        content.closest('.popup_close').off('click');
+                        $(document).off('keydown.popupClose');
+    
+                        $.post(process.env.SERVER + '/accounts/delete', { accounts: removingAccountsIDs })
+                            .then( res => {
+    
+                                if ( res.error.length ) {
+                                    elements.popup.error();
+                                } else {
+    
+                                    elements.popup.destroy()
+    
+                                    let removingAccountsIndexes = [];
+                                    if (res.success.length) {
+                                        resources.accounts.forEach((account, i) => {
+                                            if (res.success.indexOf(account._id) !== -1) {
+                                                account.render.row.el.remove();
+                                                removingAccountsIndexes.push(i)
+                                            }
+                                        })
+                                    }
+    
+                                    removingAccountsIndexes.reverse();
+                                    removingAccountsIndexes.forEach(i => {
+                                        resources.accounts.splice(i, 1)
+                                    })
+    
+                                    app.pages.resources.tabs.accounts.body.colUpdate();
+                                    app.pages.resources.tabs.accounts.footer.pagination.update($('.pagination'));
+                                }
+    
+                            })
+                            .catch( err => {
+                                elements.popup.error();
+                            })
+    
+                    })
+                let buttonClose = elements.button({
+                    text: lang.pages.resources.tabs.accounts.removeAccounts.popup.buttons.cancel
+                })
+                    .on('click', () => {
+                        elements.popup.destroy();
+                    })
+    
+                buttons.append(
+                    buttonRemove,
+                    buttonClose
+                )
+    
+                elements.popup.create('center', {
+                    title: lang.pages.resources.tabs.accounts.removeAccounts.popup.title,
+                    body: content,
+                    actions: buttons
+                })
     
             },
-            all: () => {
+        },
+        edit: {
+            popup: (account) => {
+                console.log( account )
+                let changes = {
+                    limits: {}
+                };
+    
+                let info = $('<DIV/>', { class: 'info' });
+                let id = $('<SPAN/>', { class: 'info_id', text: lang.pages.resources.tabs.accounts.edit.account + account._id });
+                let name = $('<INPUT/>', { class: 'info_name', type: 'text', placeholder: lang.pages.resources.tabs.accounts.edit.inAppName, value: account.config.name }).on('change input paste', function() { changes.name = $(this).val(); });
+                let limitMessage = $('<DIV/>', { class: 'info_limit-messages' }).append(
+                    $('<LABEL/>', { text: lang.pages.resources.tabs.accounts.edit.limits.messages.label }),
+                    $('<INPUT/>', { id: 'info_limit-messages', type: 'number', min: 0, max: 1000, placeholder: lang.pages.resources.tabs.accounts.edit.limits.messages.input, value: account.stats.messages.limit.day > 0 ? account.stats.messages.limit.day : '' }).on('change input paste', function() { changes.limits.messages = $(this).val(); }),
+                );
+                let limitInvites = $('<DIV/>', { class: 'info_limit-invites' }).append(
+                    $('<LABEL/>', { text: lang.pages.resources.tabs.accounts.edit.limits.invites.label }),
+                    $('<INPUT/>', { id: 'info_limit-invites', type: 'number', min: 0, max: 1000, placeholder: lang.pages.resources.tabs.accounts.edit.limits.invites.input, value: account.stats.invites.limit.day > 0 ? account.stats.invites.limit.day : '' }).on('change input paste', function() { changes.limits.invites = $(this).val(); }),
+                );
+                let buttonSave = elements.button({
+                    class: 'info_button',
+                    text: lang.pages.resources.tabs.accounts.edit.button.save,
+                    loader: true
+                })
+                    .on('click', () => {
+                        buttonSave.addClass('loading')
+                        app.pages.resources.tabs.accounts.edit.save(account, changes);
+                    })
+    
+                info.append(
+                    id,
+                    name,
+                    limitMessage,
+                    limitInvites,
+                    buttonSave
+                )
+    
+                let accountInfo = $('<DIV/>', { class: 'info-account' }).append(
+                    $('<DIV/>', { class: 'info_title', text: lang.pages.resources.tabs.accounts.edit.telegram.title }),
+                    $('<DIV/>', { class: 'info_group' }).append(
+                        $('<DIV/>', { class: 'info_avatar' }).append(
+                            $('<IMG/>', { class: 'info_avatar_img', src: '' })
+                        ),
+                        $('<DIV/>', { class: 'info_name' }).append(
+                            $('<INPUT/>', { type: 'text', class: 'info_firstname', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.firstname }),
+                            $('<INPUT/>', { type: 'text', class: 'info_lastname', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.lastname })
+                        )
+                    ),
+                    $('<INPUT/>', { type: 'text', class: 'info_username', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.username }),
+                    $('<TEXTAREA/>', { type: 'text', class: 'info_username', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.about }),
+                    elements.popup.vote('accountEdit', 'info_coming')
+                )
+    
+                let content = $('<DIV/>', { class: 'content' }).append(info, accountInfo)
+    
+                let chats = $('<DIV/>', { class: 'popup chats' });
+                let chatsTitle = $('<DIV/>', { class: 'popup_title', text: lang.pages.resources.tabs.accounts.edit.chats.title });
+                let chatsSearch = $('<INPUT/>', { class: 'popup_search', type: 'search', placeholder: lang.pages.resources.tabs.accounts.edit.chats.search });
+                let chatsList = $('<DIV/>', { class: 'popup_list' });
+                for (let i = 0; i < 8; i++) {
+                    chatsList.append(
+                        $('<DIV/>', { class: 'popup_list_item' }).append(
+                            $('<DIV/>', { class: 'popup_list_item_image' }),
+                            $('<DIV/>', { class: 'popup_list_item_content' })
+                        )
+                    )
+                }
+    
+                chats.append(
+                    chatsTitle,
+                    chatsSearch,
+                    chatsList,
+                    elements.popup.vote('accountChats')
+                )
+    
+    
+                elements.popup.create('group', {
+                    title: lang.pages.resources.tabs.accounts.edit.title,
+                    body: content,
+                    dontDestroy: true,
+                    saveFn: () => {
+                        buttonSave.addClass('loading');
+                        app.pages.resources.tabs.accounts.edit.save(account, changes)
+                    },
+                    second: chats
+                })
+            },
+    
+            save: (account, data) => {
+    
+                $.post(process.env.SERVER + '/accounts/edit', { id: account._id, data: data })
+                    .then( res => {
+    
+                        if ( data.name ) {
+                            account.config.name = data.name;
+                            account.render.row.el.find('.cell-name').text( data.name );
+                        }
+                        if ( data.limits.messages ) {
+                            account.stats.messages.limit.day = data.limits.messages;
+                        }
+                        if ( data.limits.invites ) {
+                            account.stats.invites.limit.day = data.limits.invites;
+                        }
+                        app.pages.resources.tabs.accounts.body.colUpdate();
+    
+                        console.log( 'updated', account )
+    
+                        setTimeout(() => {
+                            elements.popup.destroy();
+                        }, 200)
+                    })
+                    .catch( err => {
+                        elements.popup.error();
+                    })
     
             }
         }
@@ -22019,15 +22748,13 @@ const app = {
 
             // проверяем авторизацию
             if (await app.auth.check()) {
-
+                resources.vote = await utils.getResources.votes();
                 resources.accounts = await utils.getResources.accounts();
                 $('body').removeClass('loading').addClass('authorized');
                 app.sidebar.render();
                 app.content.render();
                 utils.page.open( state.pages.open );
-
-                // console.log( resources )
-
+                console.log( resources )
             } else {
                 $('body').removeClass('loading')
                 app.auth.render()

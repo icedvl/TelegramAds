@@ -32,6 +32,9 @@
 		background-image: linear-gradient(180deg, #c1c4dc 0%, #dee0f7 100%);
 	}
 
+	&:focus {}
+	outline-color: @primary;
+
 	svg:not(.icon_premium) {
 		path {
 			stroke: @dark;
@@ -77,6 +80,25 @@
 
 		&:active:not(:disabled) {
 			background: linear-gradient(180deg, #44359F 0%, #604DD6 100%);
+		}
+
+		svg:not(.icon_premium) {
+			path {
+				stroke: @white;
+			}
+		}
+	}
+
+	&.button--danger {
+		color: @white;
+		background-image: linear-gradient(180deg, #ff7777 0%, #E34D4D 50%, #E34D4D 100%);
+
+		&:hover:not(:disabled) {
+			background-position: 0 100%;
+		}
+
+		&:active:not(:disabled) {
+			background: linear-gradient(180deg, #fc3f3f 0%, #E34D4D 100%);
 		}
 
 		svg:not(.icon_premium) {

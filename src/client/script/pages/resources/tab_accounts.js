@@ -1,4 +1,5 @@
 app.pages.resources.tabs.accounts = {
+    searching: false,
     render: () => {
 
         const table = $('<DIV/>', { class: 'table resource_table' });
@@ -50,7 +51,7 @@ app.pages.resources.tabs.accounts = {
                 btnCreateGroup,
                 groups.append( app.pages.resources.tabs.accounts.header.groups.render(['Группа 1','Группа 2', 'Группа 3', 'Группа 4']) ),
                 btnAddToGroup,
-                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                app.pages.resources.tabs.accounts.header.remove.btn.render(),
                 app.pages.resources.tabs.accounts.header.checkAll.btn.render()
             )
 
@@ -316,18 +317,17 @@ app.pages.resources.tabs.accounts = {
                     resources.accounts.forEach(( account, i ) => {
                         account.render.row.filtered = false;
                     })
-
-
                 }
-
 
                 $('.table_header_row .button-check').remove();
                 $('.table_header_row .button-remove').remove();
 
                 state.params.pages.resources.tabs.accounts.filters = params;
                 localStorage.setItem('params', JSON.stringify(state.params));
-                elements.popup.destroy();
 
+                if ( $('.popup_wrap').hasClass('side') ) {
+                    elements.popup.destroy();
+                }
 
                 app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
 
@@ -341,9 +341,10 @@ app.pages.resources.tabs.accounts = {
                 app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
 
                 resources.accounts.forEach( account => {
-                    account.render.row.filtered = false;
+                    if ( account.render ) {
+                        account.render.row.filtered = false;
+                    }
                 })
-
 
                 $('.table_header_row .button-check').remove();
                 $('.table_header_row .button-remove').remove();
@@ -351,7 +352,6 @@ app.pages.resources.tabs.accounts = {
                 state.params.pages.resources.tabs.accounts.filters = params;
                 localStorage.setItem('params', JSON.stringify( state.params ));
                 elements.popup.destroy();
-
 
                 app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
 
@@ -385,16 +385,23 @@ app.pages.resources.tabs.accounts = {
             search: (input) => {
                 let request = input.val();
                 if ( request ) {
-                    $('.table_content .table_row').addClass('hide')
-                    $('.table_content .table_row').each((i, item) => {
-                        if ( $(item).find('.cell-name').text().toLowerCase().indexOf(request) !== -1
-                            || $(item).find('.cell-id').text().toLowerCase().indexOf(request) !== -1 ) {
-                            $(item).removeClass('hide');
+                    app.pages.resources.tabs.accounts.searching = true;
+                    resources.accounts.forEach(account => {
+                        account.render.row.search = false;
+                        if ( account.config.name.indexOf(request) !== -1
+                        || account._id.indexOf(request) !== -1 ) {
+                            account.render.row.search = true;
                         }
                     })
                 } else {
-                    $('.table_content .table_row').removeClass('hide');
+                    app.pages.resources.tabs.accounts.searching = false;
+                    resources.accounts.forEach(account => {
+                        account.render.row.search = false;
+                    })
                 }
+                // app.pages.resources.tabs.accounts.body.colUpdate();
+                app.pages.resources.tabs.accounts.body.colCalcWidth();
+                app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
             }
         },
         checkAll: {
@@ -404,11 +411,13 @@ app.pages.resources.tabs.accounts = {
                         class: 'button-check',
                         icon: svg.icon.check,
                         title: lang.pages.resources.tabs.accounts.table.header.actions.check
+                    }).on('click', () => {
+                        app.pages.resources.tabs.accounts.check();
                     })
                 }
             }
         },
-        removeAll: {
+        remove: {
             btn: {
                 render: () => {
                     return elements.button({
@@ -416,13 +425,16 @@ app.pages.resources.tabs.accounts = {
                         icon: svg.icon.remove,
                         title: lang.pages.resources.tabs.accounts.table.header.actions.remove
                     })
+                        .on('click', () => {
+                            app.pages.resources.tabs.accounts.remove.popup()
+                        })
+
                 }
             }
         }
     },
     body: {
         render: () => {
-
             const tableBody = $('<DIV/>', { class: 'table_body' });
             const tableContent = $('<DIV/>', { class: 'table_content' });
 
@@ -447,6 +459,7 @@ app.pages.resources.tabs.accounts = {
                                 filtered: false,
                                 show: true,
                                 selected: false,
+                                search: false,
                                 el: null,
                                 set visability(value) {
                                     if (value) {
@@ -547,7 +560,7 @@ app.pages.resources.tabs.accounts = {
                                         })
                                         if (!$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
                                             $('.table_header_row:first-child').append(
-                                                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                app.pages.resources.tabs.accounts.header.remove.btn.render(),
                                                 app.pages.resources.tabs.accounts.header.checkAll.btn.render()
                                             )
                                         }
@@ -666,7 +679,7 @@ app.pages.resources.tabs.accounts = {
 
                                         if ( !$('.table_header_row .button-remove').length && !$('.table_header_row .button-check').length ) {
                                             $('.table_header_row:first-child').append(
-                                                app.pages.resources.tabs.accounts.header.removeAll.btn.render(),
+                                                app.pages.resources.tabs.accounts.header.remove.btn.render(),
                                                 app.pages.resources.tabs.accounts.header.checkAll.btn.render()
                                             )
                                         }
@@ -701,11 +714,10 @@ app.pages.resources.tabs.accounts = {
                 },
                 name: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.config.name }).on('click', app.pages.resources.tabs.accounts.body.rows.columns.name.change)
-                    },
-                    change: () => {
-                        console.log('Заглушка: Попап с инпутом для смены имени')
-                    },
+                        return $('<DIV/>', { class: 'table_cell cell-name', 'data-order': item.order, text: account.config.name }).on('click', () => {
+                            app.pages.resources.tabs.accounts.edit.popup(account)
+                        })
+                    }
                 },
                 floodTime: {
                     render: (item, account) => {
@@ -796,13 +808,20 @@ app.pages.resources.tabs.accounts = {
                 },
                 check: {
                     render: (item, account) => {
-                        return $('<DIV/>', { class: 'table_cell cell-check', 'data-order': item.order})
-                            .append( svg.icon.check )
-                            .on('click', () => { app.pages.resources.tabs.accounts.body.rows.columns.check.check( account.id ) })
-                    },
-                    check: (account) => {
-                        console.log('Заглушка: проверка аккаунта', account.id);
-                    },
+                        if ( account.status === 'BAN' ) {
+                            return $('<DIV/>', {class: 'table_cell cell-check', 'data-order': item.order})
+                                .append(svg.icon.remove)
+                                .on('click', () => {
+                                    app.pages.resources.tabs.accounts.remove.popup(account._id)
+                                })
+                        } else {
+                            return $('<DIV/>', {class: 'table_cell cell-check', 'data-order': item.order})
+                                .append(svg.icon.check)
+                                .on('click', () => {
+                                    app.pages.resources.tabs.accounts.check(account._id)
+                                })
+                        }
+                    }
                 }
             }
         },
@@ -897,7 +916,7 @@ app.pages.resources.tabs.accounts = {
                 )
             },
             change: (sum, resultEl) => {
-                // меняем кофиг
+                // меняем конфиг
                 state.params.pages.resources.tabs.accounts.rowsOnPage = sum;
                 localStorage.setItem('params', JSON.stringify( state.params ))
                 resultEl.text( state.params.pages.resources.tabs.accounts.rowsOnPage )
@@ -929,6 +948,19 @@ app.pages.resources.tabs.accounts = {
                     accounts = resources.accounts;
                 }
 
+                if ( app.pages.resources.tabs.accounts.searching ) {
+                    console.log('111')
+                    let tempArray = [];
+                    accounts.forEach(account => {
+                        account.render.row.visability = false;
+                        if ( account.render.row.search ) {
+                            tempArray.push( account )
+                        }
+                    })
+                    accounts = tempArray;
+                    console.log( tempArray.length )
+                }
+
 
 
                 const rowsOnPage = state.params.pages.resources.tabs.accounts.rowsOnPage;
@@ -946,6 +978,9 @@ app.pages.resources.tabs.accounts = {
                 })
 
                 app.pages.resources.tabs.accounts.footer.total.update(accounts.length, 1)
+
+                $('.table_row .table_cell').css({'background': 'transparent'});
+                $('.table_row:visible:odd .table_cell').css({'background': '#F9F9FF'});
 
 
                 for (let i = 1; i < pageCount + 1; i++) {
@@ -972,10 +1007,15 @@ app.pages.resources.tabs.accounts = {
 
                         $('.table_header_row .button-check').remove();
                         $('.table_header_row .button-remove').remove();
+
+                        $('.table_row .table_cell').css({'background': 'transparent'});
+                        $('.table_row:visible:odd .table_cell').css({'background': '#F9F9FF'});
+
+                        app.pages.resources.tabs.accounts.body.colCalcWidth();
                     })
                     pagination.append( pageButton )
-
                 }
+
             }
         },
         total: {
@@ -1022,12 +1062,15 @@ app.pages.resources.tabs.accounts = {
     addAccounts: {
         btn: {
             render: () => {
-                return btnAddAccounts = $('<DIV/>', { class: 'button button--primary button-add-accounts' })
-                    .append(
-                        svg.icon.plus,
-                        $('<SPAN/>', { text: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts })
-                    )
-                    .on('click', app.pages.resources.tabs.accounts.addAccounts.popup.render)
+
+                return elements.button({
+                    class: 'button-add-accounts',
+                    primary: true,
+                    icon: svg.icon.plus,
+                    text: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts,
+                    title: lang.pages.resources.tabs.accounts.table.header.buttons.addAccounts
+                })
+                    .on('click', app.pages.resources.tabs.accounts.addAccounts.popup.render )
             }
         },
         popup: {
@@ -1110,6 +1153,9 @@ app.pages.resources.tabs.accounts = {
                                         .off('click.add')
                                 });
                         } else {
+
+                            console.log(data)
+
                             let content = $('.accounts_tab-content.tab-tdata');
 
                             content.find('*').remove();
@@ -1129,7 +1175,47 @@ app.pages.resources.tabs.accounts = {
                                     resources.accounts.push( account )
                                 })
 
-                                app.pages.resources.tabs.accounts.body.colUpdate();
+                                // app.pages.resources.tabs.accounts.body.colUpdate();
+
+
+
+
+
+
+
+                                // убираем из стейта филттрацию (вдруг была)
+                                state.params.pages.resources.tabs.accounts.filters.isFiltered = false;
+                                for (const key in state.params.pages.resources.tabs.accounts.filters.status ) {
+                                    state.params.pages.resources.tabs.accounts.filters.status[ key ].selected = false;
+                                }
+                                // убираем состояние кнопки филтрации (вдруг была)
+                                app.pages.resources.tabs.accounts.header.filter.btn.clear( $('.table_header .button-filter') )
+                                // сохраняем отклчение филтрации
+                                localStorage.setItem('params', JSON.stringify( state.params ));
+                                // убираем кнопки селекта (вдруг было что-то выбрано)
+                                $('.table_header_row .button-check').remove();
+                                $('.table_header_row .button-remove').remove();
+                                // очищаем поиск
+                                app.pages.resources.tabs.accounts.searching = false;
+                                $('.table_search input').val('');
+
+                                // удаляем все отрендереные строки у обектов
+                                resources.accounts.forEach( account => {
+                                    delete account.render;
+                                })
+
+                                // удаляем отрендереные строки с экрана
+                                $('.table_body').remove();
+                                // ренденрим строки заново
+                                $('.table_header').after(
+                                    app.pages.resources.tabs.accounts.body.render()
+                                )
+
+                                app.pages.resources.tabs.accounts.body.colCalcWidth();
+
+                                // обновляем пагинацию
+                                app.pages.resources.tabs.accounts.footer.pagination.update( $('.pagination') );
+
 
                             }
 
@@ -1166,6 +1252,8 @@ app.pages.resources.tabs.accounts = {
 
                             content.append( button )
                         }
+
+
                     }
                 },
                 session: {
@@ -1208,19 +1296,261 @@ app.pages.resources.tabs.accounts = {
             }
         }
     },
-    check: {
-        once: (account) => {
+    check: (id) => {
+        let checkingAccounts = [];
+        resources.accounts.forEach(account => {
+            if ( !id ) {
+                if (account.render.row.selected) {
+                    checkingAccounts.push({
+                        id: account._id,
+                        element: account.render.row.el
+                    });
+                }
+            } else {
+                if ( id === account._id ) {
+                    checkingAccounts.push({
+                        id: account._id,
+                        element: account.render.row.el
+                    });
+                }
+            }
+        })
 
-        },
-        all: () => {
-
-        }
+        console.log( 'Checking', checkingAccounts )
     },
     remove: {
-        once: (account) => {
+        popup: (id) => {
+
+            let removingAccounts = [];
+            let content = $('<DIV/>', {class: 'remove-accounts'})
+
+            if ( !id ) {
+                resources.accounts.forEach(account => {
+                    if (account.render.row.selected) {
+                        removingAccounts.push({
+                            id: account._id,
+                            name: account.config.name
+                        });
+                        content.append(
+                            $('<DIV/>', {class: 'remove-accounts_item'}).append(
+                                $('<SPAN/>', {text: account._id}),
+                                $('<SPAN/>', {text: account.config.name})
+                            )
+                        )
+                    }
+                })
+            } else {
+                resources.accounts.forEach(account => {
+                    if ( account._id === id ) {
+                        removingAccounts.push({
+                            id: account._id,
+                            name: account.config.name
+                        });
+                        content.append(
+                            $('<DIV/>', {class: 'remove-accounts_item'}).append(
+                                $('<SPAN/>', {text: account._id}),
+                                $('<SPAN/>', {text: account.config.name})
+                            )
+                        )
+                    }
+                })
+            }
+
+            if (removingAccounts.length > 1) {
+                content.addClass('list')
+                content.prepend(
+                    $('<DIV/>', {
+                        class: 'list_title',
+                        text: removingAccounts.length + ' ' + utils.declOfNum(removingAccounts.length, lang.pages.resources.tabs.accounts.removeAccounts.popup.accounts)
+                    })
+                )
+            }
+
+            let buttons = $('<DIV/>', {class: 'remove-accounts_buttons'});
+            let buttonRemove = elements.button({
+                text: lang.pages.resources.tabs.accounts.removeAccounts.popup.buttons.confirm,
+                danger: true,
+                loader: true
+            })
+                .on('click.remove', () => {
+                    let removingAccountsIDs = [];
+                    removingAccounts.forEach(account => {
+                        removingAccountsIDs.push(account.id)
+                    })
+
+                    // Добавляем лоадер, и отключаем все возможности закрыть попап, пока ждем ответ от сервер
+                    buttonRemove.addClass('loading').off('click.remove')
+                    buttonClose.off('click.close')
+                    content.closest('.popup_close').off('click');
+                    $(document).off('keydown.popupClose');
+
+                    $.post(process.env.SERVER + '/accounts/delete', { accounts: removingAccountsIDs })
+                        .then( res => {
+
+                            if ( res.error.length ) {
+                                elements.popup.error();
+                            } else {
+
+                                elements.popup.destroy()
+
+                                let removingAccountsIndexes = [];
+                                if (res.success.length) {
+                                    resources.accounts.forEach((account, i) => {
+                                        if (res.success.indexOf(account._id) !== -1) {
+                                            account.render.row.el.remove();
+                                            removingAccountsIndexes.push(i)
+                                        }
+                                    })
+                                }
+
+                                removingAccountsIndexes.reverse();
+                                removingAccountsIndexes.forEach(i => {
+                                    resources.accounts.splice(i, 1)
+                                })
+
+                                app.pages.resources.tabs.accounts.body.colUpdate();
+                                app.pages.resources.tabs.accounts.footer.pagination.update($('.pagination'));
+                            }
+
+                        })
+                        .catch( err => {
+                            elements.popup.error();
+                        })
+
+                })
+            let buttonClose = elements.button({
+                text: lang.pages.resources.tabs.accounts.removeAccounts.popup.buttons.cancel
+            })
+                .on('click', () => {
+                    elements.popup.destroy();
+                })
+
+            buttons.append(
+                buttonRemove,
+                buttonClose
+            )
+
+            elements.popup.create('center', {
+                title: lang.pages.resources.tabs.accounts.removeAccounts.popup.title,
+                body: content,
+                actions: buttons
+            })
 
         },
-        all: () => {
+    },
+    edit: {
+        popup: (account) => {
+            console.log( account )
+            let changes = {
+                limits: {}
+            };
+
+            let info = $('<DIV/>', { class: 'info' });
+            let id = $('<SPAN/>', { class: 'info_id', text: lang.pages.resources.tabs.accounts.edit.account + account._id });
+            let name = $('<INPUT/>', { class: 'info_name', type: 'text', placeholder: lang.pages.resources.tabs.accounts.edit.inAppName, value: account.config.name }).on('change input paste', function() { changes.name = $(this).val(); });
+            let limitMessage = $('<DIV/>', { class: 'info_limit-messages' }).append(
+                $('<LABEL/>', { text: lang.pages.resources.tabs.accounts.edit.limits.messages.label }),
+                $('<INPUT/>', { id: 'info_limit-messages', type: 'number', min: 0, max: 1000, placeholder: lang.pages.resources.tabs.accounts.edit.limits.messages.input, value: account.stats.messages.limit.day > 0 ? account.stats.messages.limit.day : '' }).on('change input paste', function() { changes.limits.messages = $(this).val(); }),
+            );
+            let limitInvites = $('<DIV/>', { class: 'info_limit-invites' }).append(
+                $('<LABEL/>', { text: lang.pages.resources.tabs.accounts.edit.limits.invites.label }),
+                $('<INPUT/>', { id: 'info_limit-invites', type: 'number', min: 0, max: 1000, placeholder: lang.pages.resources.tabs.accounts.edit.limits.invites.input, value: account.stats.invites.limit.day > 0 ? account.stats.invites.limit.day : '' }).on('change input paste', function() { changes.limits.invites = $(this).val(); }),
+            );
+            let buttonSave = elements.button({
+                class: 'info_button',
+                text: lang.pages.resources.tabs.accounts.edit.button.save,
+                loader: true
+            })
+                .on('click', () => {
+                    buttonSave.addClass('loading')
+                    app.pages.resources.tabs.accounts.edit.save(account, changes);
+                })
+
+            info.append(
+                id,
+                name,
+                limitMessage,
+                limitInvites,
+                buttonSave
+            )
+
+            let accountInfo = $('<DIV/>', { class: 'info-account' }).append(
+                $('<DIV/>', { class: 'info_title', text: lang.pages.resources.tabs.accounts.edit.telegram.title }),
+                $('<DIV/>', { class: 'info_group' }).append(
+                    $('<DIV/>', { class: 'info_avatar' }).append(
+                        $('<IMG/>', { class: 'info_avatar_img', src: '' })
+                    ),
+                    $('<DIV/>', { class: 'info_name' }).append(
+                        $('<INPUT/>', { type: 'text', class: 'info_firstname', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.firstname }),
+                        $('<INPUT/>', { type: 'text', class: 'info_lastname', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.lastname })
+                    )
+                ),
+                $('<INPUT/>', { type: 'text', class: 'info_username', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.username }),
+                $('<TEXTAREA/>', { type: 'text', class: 'info_username', value: '', placeholder: lang.pages.resources.tabs.accounts.edit.telegram.about }),
+                elements.popup.vote('accountEdit', 'info_coming')
+            )
+
+            let content = $('<DIV/>', { class: 'content' }).append(info, accountInfo)
+
+            let chats = $('<DIV/>', { class: 'popup chats' });
+            let chatsTitle = $('<DIV/>', { class: 'popup_title', text: lang.pages.resources.tabs.accounts.edit.chats.title });
+            let chatsSearch = $('<INPUT/>', { class: 'popup_search', type: 'search', placeholder: lang.pages.resources.tabs.accounts.edit.chats.search });
+            let chatsList = $('<DIV/>', { class: 'popup_list' });
+            for (let i = 0; i < 8; i++) {
+                chatsList.append(
+                    $('<DIV/>', { class: 'popup_list_item' }).append(
+                        $('<DIV/>', { class: 'popup_list_item_image' }),
+                        $('<DIV/>', { class: 'popup_list_item_content' })
+                    )
+                )
+            }
+
+            chats.append(
+                chatsTitle,
+                chatsSearch,
+                chatsList,
+                elements.popup.vote('accountChats')
+            )
+
+
+            elements.popup.create('group', {
+                title: lang.pages.resources.tabs.accounts.edit.title,
+                body: content,
+                dontDestroy: true,
+                saveFn: () => {
+                    buttonSave.addClass('loading');
+                    app.pages.resources.tabs.accounts.edit.save(account, changes)
+                },
+                second: chats
+            })
+        },
+
+        save: (account, data) => {
+
+            $.post(process.env.SERVER + '/accounts/edit', { id: account._id, data: data })
+                .then( res => {
+
+                    if ( data.name ) {
+                        account.config.name = data.name;
+                        account.render.row.el.find('.cell-name').text( data.name );
+                    }
+                    if ( data.limits.messages ) {
+                        account.stats.messages.limit.day = data.limits.messages;
+                    }
+                    if ( data.limits.invites ) {
+                        account.stats.invites.limit.day = data.limits.invites;
+                    }
+                    app.pages.resources.tabs.accounts.body.colUpdate();
+
+                    console.log( 'updated', account )
+
+                    setTimeout(() => {
+                        elements.popup.destroy();
+                    }, 200)
+                })
+                .catch( err => {
+                    elements.popup.error();
+                })
 
         }
     }

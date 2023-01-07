@@ -10,7 +10,14 @@ languages.en = {
       minutes: 'm',
       seconds: 's'
     },
-    close: 'Close'
+    close: 'Close',
+    popup: {
+      error: {
+        title: 'Error',
+        name: 'Unknown error',
+        description: 'Restart the application, and try again'
+      }
+    }
   },
   lang: {
     code: 'EN',
@@ -26,6 +33,28 @@ languages.en = {
     serverNotRespond: {
       message: 'The server is not responding',
       button: 'Retry'
+    }
+  },
+  coming: {
+    cta: 'Vote',
+    title: 'Vote',
+    description: 'By voting for future functionality, you help us determine development priorities.',
+    stars: {
+      1: 'I don\'t need',
+      2: 'Well, let it be',
+      3: 'I would try',
+      4: 'Very lacking',
+      5: 'Critically important'
+    },
+    accountEdit: {
+      cover: 'Editing account details - Coming soon!',
+      title: 'Editing account details',
+      description: 'Allows you to change the data of the added account: Avatar, Username, First Name, Last Name, Description'
+    },
+    accountChats: {
+      cover: 'Chats -  Coming Soon!',
+      title: 'Chats',
+      description: 'Allows the account to join groups and channels, as well as to correspond with users'
     }
   },
   pages: {
@@ -70,6 +99,7 @@ languages.en = {
             header: {
               search: 'Find an account',
               buttons: {
+                addAccounts: 'Add Accounts',
                 createGroup: 'Create new group'
               },
               actions: {
@@ -209,6 +239,45 @@ languages.en = {
                 addMore: 'Add more accounts',
                 nothing: 'Accounts not found'
               }
+            }
+          },
+          removeAccounts: {
+            popup: {
+              title: 'Delete',
+              accounts: ['account', 'accounts', 'accounts'],
+              buttons: {
+                confirm: 'Delete',
+                cancel: 'Cancel'
+              }
+            }
+          },
+          edit: {
+            title: 'Edit',
+            account: 'Account - ',
+            inAppName: 'Account name in app',
+            limits: {
+              messages: {
+                label: 'Limit of messages per day',
+                input: 'Unlimited'
+              },
+              invites: {
+                label: 'Limit of invites per day',
+                input: 'Unlimited'
+              }
+            },
+            button: {
+              save: 'Save'
+            },
+            telegram: {
+              title: 'Telegram account details',
+              firstname: 'First Name',
+              lastname: 'Last Name',
+              username: '@username',
+              about: 'About',
+            },
+            chats: {
+              title: 'Chats',
+              search: 'Search'
             }
           }
         },

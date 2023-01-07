@@ -1,3 +1,5 @@
+// import {ipcRenderer} from "electron";
+
 app.auth = {
     render: () => {
 
@@ -16,9 +18,11 @@ app.auth = {
     },
     check: async () => {
          if ( localStorage.getItem('token') ) {
+
+             ipcRenderer.send('token', { token: localStorage.getItem('token') });
+
              $.ajaxSetup({
                  headers: {
-                     'Content-Type': 'application/json',
                      'Accept': 'application/json',
                      'Authorization': 'Bearer ' + localStorage.getItem('token')
                  }

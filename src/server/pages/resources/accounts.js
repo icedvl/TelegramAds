@@ -6,6 +6,7 @@ const axios = require('axios');
 
 
 
+
 // Добавление новых аккаунтов из tdata
 ipcMain.on('addAccounts_tdata_req', (event, data) => {
 
@@ -83,8 +84,6 @@ ipcMain.on('addAccounts_tdata_req', (event, data) => {
 
             async.forEach( tdataArray, (requestArray, callback) => {
 
-
-
                 axios.post(
                     process.env.SERVER + '/accounts/add',
                     {
@@ -128,3 +127,4 @@ ipcMain.on('addAccounts_tdata_req', (event, data) => {
     }
 
 });
+

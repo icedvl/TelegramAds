@@ -1,18 +1,12 @@
 require('dotenv').config();
+const {ipcMain, app, dialog} = require("electron");
+const axios = require('axios');
 require('./pages/resources/accounts.js');
 
 
-
-// const axios = require('axios')
-// const fs = require("fs-extra");
-// const async = require("async");
-// const { Api, TelegramClient, Users } = require('telegram');
-// const { StringSession } = require('telegram/sessions');
-// const input = require('input');
-
-
-
-
+ipcMain.on('token', (event, data) => {
+    global.token = data.token;
+})
 
 
 

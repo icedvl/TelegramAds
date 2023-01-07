@@ -1,3 +1,5 @@
+// const { ipcRenderer } = require('electron');
+
 const utils = {
     system: {
         connectionStatus: () => {
@@ -37,11 +39,14 @@ const utils = {
         }
     },
     getResources: {
+        votes: () => {
+            return $.get(process.env.SERVER + '/vote/get');
+        },
         accounts: () => {
-            return $.get(process.env.SERVER + '/accounts/get')
+            return $.get(process.env.SERVER + '/accounts/get');
         },
         proxies: () => {
-            return $.get(process.env.SERVER + '/accounts/proxies')
+            return $.get(process.env.SERVER + '/accounts/proxies');
         }
     },
     page: {
